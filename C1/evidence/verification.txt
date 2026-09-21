@@ -1,0 +1,13 @@
+postgres_version: PostgreSQL 18.3 on x86_64-windows, compiled by msvc-19.44.35223, 64-bit
+document_count: 1000
+min_document_id: 1
+max_document_id: 1000
+chunk_count: 160
+referenced_document_count: 157
+duplicate_document_ids: 0
+duplicate_chunk_ids: 0
+orphan_chunk_count: 0
+foreign_key_validated: True
+fts_result_count_before: 0
+fts_result_count_after: 0
+fts_rows_and_order_identical: True

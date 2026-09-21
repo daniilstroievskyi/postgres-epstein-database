@@ -1,0 +1,6 @@
+Sort  (cost=12.83..12.84 rows=1 width=16)
+  Sort Key: source_id
+  ->  Bitmap Heap Scan on chunks  (cost=8.56..12.82 rows=1 width=16)
+        Recheck Cond: (to_tsvector('english'::regconfig, COALESCE(content, ''::text)) @@ '''flight'''::tsquery)
+        ->  Bitmap Index Scan on chunks_content_fts_gin  (cost=0.00..8.56 rows=1 width=0)
+              Index Cond: (to_tsvector('english'::regconfig, COALESCE(content, ''::text)) @@ '''flight'''::tsquery)

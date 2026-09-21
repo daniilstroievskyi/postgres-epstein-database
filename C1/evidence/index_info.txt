@@ -1,0 +1,3 @@
+definition: CREATE INDEX chunks_content_fts_gin ON c1_checkpoint.chunks USING gin (to_tsvector('english'::regconfig, COALESCE(content, ''::text)))
+size_bytes: 122880
+size_pretty: 120 kB

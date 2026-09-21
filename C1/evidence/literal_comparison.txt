@@ -1,0 +1,11 @@
+value	normalized_fts	normalized_query	fts_matches	ilike_matches
+flight	'flight':1	'flight'	True	True
+flights	'flight':1	'flight'	True	True
+preflight	'preflight':1	'flight'	False	True
+
+Meaning:
+FTS compares normalized English lexemes (whole searchable words).
+Therefore flight and flights share the lexeme 'flight'.
+ILIKE '%flight%' performs a case-insensitive character-substring test.
+Therefore preflight contains the substring even though its FTS lexeme is
+not the separate lexeme 'flight'.

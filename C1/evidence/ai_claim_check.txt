@@ -1,0 +1,6 @@
+claim: No imported sample chunk contains the substring 'flight' in any form, so the empty FTS result is correct data, not an indexing error.
+test: SELECT count(*) AS chunks_total, count(*) FILTER (WHERE content ILIKE '%flight%') AS chunks_with_flight, count(*) FILTER (WHERE content ILIKE '%floor%') AS chunks_with_floor FROM c1_checkpoint.chunks
+chunks_total: 160
+chunks_with_flight_substring: 0
+chunks_with_floor_substring (positive control): 11
+verdict: confirmed
