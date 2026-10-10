@@ -1,161 +1,281 @@
-# Z1 checkpoint C1: Parquet to PostgreSQL
+# Z1: Parquet to PostgreSQL
 
-## Original local setup notes
+**Author:** Stroievskyi Daniil.
 
-Method: local PostgreSQL installation.
+This project is being developed for the full Z1 assignment from an empty PostgreSQL working
+database, using the 56 prescribed shards across all 13 source layers. The source
+revision is fixed to `133ef9f0a539fafc270cde8fa8638dc38d89968d` in
+`kabasshouse/epstein-data`.
 
-- Server version: PostgreSQL 18.3 on x86_64-windows, compiled by
-  msvc-19.44.35223, 64-bit.
-- Working database: `dbs2`.
-- Reproducibility: existing local PostgreSQL server, connected through pgAdmin 4
-  on the default port 5432.
-- Python environment: Python 3.13.7 with `huggingface_hub` 1.31.0.
-- DuckDB version: 1.5.5.
+## Implementation status
 
-Install the original requirements with:
+Download, manifest validation, profiling, the relational model and the full ETL
+are implemented. See [the model](docs/schema-proposal.md),
+[field mapping](docs/data-mapping.md), [importer design](docs/import-design.md)
+and [import report](docs/import-report.md) for decisions and measured validation.
+Section 7 queries and auxiliary workload indexes are implemented; see
+[queries and indexes](docs/queries-and-indexes.md) for semantics and actual evidence.
+The section 8 full-input benchmark is implemented and measured; see
+[benchmark](docs/benchmark.md). The section 9 R2 materialized financial report is
+implemented and verified; see [extension](docs/extension.md).
+The [AI report](docs/ai-report.md) is finalized with the available model/date
+information, recorded student review and an actual verified/refined claim.
+The final source commit, ZIP generation and individual defense remain.
 
-```powershell
-pip install -r .\requirements.txt
-```
+## Project layout
 
-Explore the downloaded Parquet files with DuckDB:
+- `scripts/`: independent full Z1 download, profiling, ETL, validation and repeat proof.
+- `tests/`: source/profiling, transformation and isolated database integrity/recovery tests.
+- `sql/`: full-project SQL and Docker setup utilities.
+- `source-manifest.json`: complete pinned source inventory, hashes, sizes and counts.
+- `docs/`: project reports, including the data profile, model mapping, import report,
+  benchmark, extension and AI report.
+- `evidence/`: metadata-only evidence from the full source.
+- `data/`: ignored original source files and profiling scratch space.
 
-```powershell
-.\.venv\Scripts\python.exe .\scripts\explore_duckdb.py
-```
+The historical checkpoint is isolated in `archive/C1/`, with its own documentation,
+scripts, SQL, tests, dependencies and local data. It is excluded from the final
+project's execution and test commands. Final Z1 does not import its modules, use its
+sample selection, or read its manifest, evidence or local data. Exclude `archive/`
+from the final Z1 submission package.
 
-The versioned download uses `hf_hub_download` with:
+## Environment
 
-```python
-from huggingface_hub import hf_hub_download
+The current full-project environment uses:
 
-REPO_ID = "kabasshouse/epstein-data"
-REVISION = "133ef9f0a539fafc270cde8fa8638dc38d89968d"
+- Docker image: `postgres:18.3-bookworm` (PostgreSQL 18.3 on Debian/Linux).
+- Python: 3.13.7.
+- DuckDB: 1.5.5.
+- psycopg: 3.3.6.
+- huggingface_hub: 1.31.0.
 
-files = [
-    "data/documents/documents-00000-of-00015.parquet",
-    "data/chunks/chunks-00000-of-00011.parquet",
-]
-
-for filename in files:
-    path = hf_hub_download(
-        repo_id=REPO_ID,
-        repo_type="dataset",
-        filename=filename,
-        revision=REVISION,
-        local_dir="./data",
-    )
-    print("Downloaded:", path)
-```
-
-Analyse the files with:
-
-```powershell
-py .\scripts\explore_duckdb.py
-```
-
-## C1 implementation
-
-This repository implements the small C1 checkpoint from `assignment.md`. It does not
-attempt the later, full 13-layer Z1 import. The checkpoint write-up is `C1/run.md`.
-
-## What the checkpoint demonstrates
-
-The pipeline downloads two immutable Parquet shards, selects `c1-sample-v1`
-deterministically, imports it into a relational PostgreSQL model, verifies relational
-integrity, and compares PostgreSQL full-text search before and after a compatible GIN
-index is added.
-
-Pinned source:
-
-- dataset: `kabasshouse/epstein-data`
-- revision: `133ef9f0a539fafc270cde8fa8638dc38d89968d`
-- document shard: `data/documents/documents-00000-of-00015.parquet`
-- chunk shard: `data/chunks/chunks-00000-of-00011.parquet`
-
-The two currently downloaded files were inspected with DuckDB. They contain 100,000
-documents and 200,000 chunks. The deterministic checkpoint selection has exactly 1,000
-documents (source IDs 1 through 1,000) and 160 chunks referring to 157 documents.
-
-## Relational model
-
-`c1_checkpoint.documents` stores one source document per row. Its source `id` is kept as
-the `BIGINT` primary key `source_id`; `file_key` is also unique. `dataset` and
-`document_type` retain the required source metadata. `document_type` remains nullable
-because it is missing in some source rows.
-
-`c1_checkpoint.chunks` stores one source text chunk per row. Its source `id` is the
-primary key. `document_source_id` is a real, validated foreign key to the document
-table. `(document_source_id, chunk_index)` is unique, preserving the meaning of a
-chunk's position within its document.
-
-Using source IDs directly avoids an unnecessary surrogate-ID mapping for this fixed
-revision. A larger multi-source design could add internal IDs while keeping these
-source IDs under a source/revision-scoped unique constraint.
-
-## Setup and execution
-
-Prerequisites are Python 3.13 and a running PostgreSQL server. The defaults match the
-local setup recorded for this repository: database `dbs2`, user `postgres`, host
-`localhost`, port `5432`.
+Install dependencies:
 
 ```powershell
+# On a fresh checkout, create the virtual environment first:
+if (-not (Test-Path -LiteralPath .venv)) { py -3.13 -m venv .venv }
 .\.venv\Scripts\python.exe -m pip install -r .\requirements.txt
-.\.venv\Scripts\python.exe .\scripts\data_download.py
-.\.venv\Scripts\python.exe .\scripts\manifest_c1.py
+```
+
+## PostgreSQL with Docker
+
+Requirements: Docker Desktop with Docker Compose. Create the configuration file if
+it does not exist, set its password, validate the configuration and start PostgreSQL:
+
+```powershell
+if (-not (Test-Path -LiteralPath .env)) { Copy-Item .env.example .env }
+# Edit .env and set POSTGRES_PASSWORD.
+docker compose config --quiet
+docker compose up -d
+docker compose ps
+```
+
+The database is `dbs2`, user `postgres`, at `localhost:5432`. The `.env` file is
+private and ignored by Git. Database and user settings initialize a new volume;
+changing them does not rename an existing volume's users or databases. The provided
+`sql/00_docker_existing_volume.sql` repairs the earlier Docker initialization without
+deleting existing data; it is a Docker setup utility, not part of the data importer.
+
+If the original Windows PostgreSQL service occupies port 5432, stop it from an
+Administrator PowerShell before starting the Docker instance:
+
+```powershell
+Stop-Service -Name postgresql-x64-18 -ErrorAction Stop
+```
+
+Check server identity:
+
+```powershell
+docker compose exec postgres psql -U postgres -d dbs2 -c "SELECT current_database(), current_user, version();"
+```
+
+The Docker server version identifies Debian/Linux. Stop the container with
+`docker compose stop`; restart with `docker compose up -d`. The named volume
+preserves database contents. `docker compose down -v` deletes that storage.
+
+## Full input and profiling
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\download_z1.py
+.\.venv\Scripts\python.exe .\scripts\download_z1.py --verify-only
+.\.venv\Scripts\python.exe .\scripts\profile_z1.py
+.\.venv\Scripts\python.exe .\scripts\analyze_z1.py
 .\.venv\Scripts\python.exe -m unittest discover -s .\tests -v
 ```
 
-Give libpq the local password only for the current shell; never commit it:
+Only the download command needs network access. The downloader uses its own explicit
+56-shard inventory, excludes parallel exports, verifies content against the pinned
+repository's recorded hashes, and preserves the three source documentation files.
+The manifest is generated only after inventory, hashes, and row totals pass checks.
+Interrupted downloads can be rerun against the same pinned revision; completed
+immutable source files may be reused from the download library's local cache.
+
+Verification and profiling work offline. Verification checks every file's inventory
+membership, content SHA-256, byte size and row count against the full manifest and
+writes `evidence/source-validation.json`.
+
+The profile uses a 512 MB DuckDB memory limit with scratch space under `data/work/`.
+It outputs schemas and aggregates without document text or person names. Equality
+of source IDs alone does not prove a shared namespace or a correct identity link.
+All final-project source selection is manifest-based rather than an unrestricted
+`*.parquet` glob.
+
+Keep project reports in `docs/` with the filenames required by the assignment.
+The root README provides the entry point. The downloaded source `README.md` and
+`PROVENANCE.md` stay unchanged under `data/` because their paths and content are
+recorded in the manifest.
+
+## Full ETL, validation and safe repetition
+
+Run against the working database configured in `.env`:
 
 ```powershell
-$env:PGPASSWORD = "your local PostgreSQL password"
-.\.venv\Scripts\python.exe .\scripts\import_c1.py --rebuild
-.\.venv\Scripts\python.exe .\scripts\verify_c1.py
-Remove-Item Env:PGPASSWORD
+.\.venv\Scripts\python.exe scripts/import_z1.py
+.\.venv\Scripts\python.exe scripts/validate_z1.py
+.\.venv\Scripts\python.exe scripts/prove_z1_repeat.py
 ```
 
-If the connection differs, pass a DSN without putting a password in the repository:
+The importer creates `z1` and `z1_audit` on its first invocation. It verifies all
+source files first, then streams bounded batches (default 2,000 rows / approximate
+16 MiB payload), resolves references and commits data with its progress ledger.
+Re-running the same command resumes committed work; completed loads skip all
+source ranges and revalidate. Different source/schema/transformation versions are
+refused. It never resets the database or Docker volume automatically.
+
+The standalone `sql/schema.sql` is reviewable DDL generated from `scripts/z1_model.py`;
+let the importer initialize its schema and catalog together instead of running the
+DDL manually before the first import. Source acquisition timestamps are excluded
+from load identity. The original source strings, IDs and IEEE floating values are
+retained and compared through independently reconstructed fingerprints.
+
+Database tests use random `z1_test_*` and `z1_query_test_*` schemas containing only synthetic records,
+then remove those exact test schemas. They do not insert test rows into `z1`:
 
 ```powershell
-.\.venv\Scripts\python.exe .\scripts\import_c1.py --rebuild --dsn "host=localhost port=5432 dbname=dbs2 user=postgres"
-.\.venv\Scripts\python.exe .\scripts\verify_c1.py --dsn "host=localhost port=5432 dbname=dbs2 user=postgres"
+$env:Z1_DB_TESTS='1'
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+Remove-Item Env:Z1_DB_TESTS
 ```
 
-`--rebuild` is mandatory because the importer intentionally drops and recreates only
-the dedicated `c1_checkpoint` schema. A second run therefore cannot silently duplicate
-rows.
+To demonstrate one source-to-target trace without printing source text:
 
-## Required FTS/GIN experiment
-
-The experiment uses the required predicate:
-
-```sql
-to_tsvector('english', coalesce(content, ''))
-@@ plainto_tsquery('english', 'flight')
+```powershell
+.\.venv\Scripts\python.exe scripts/trace_z1.py --layer documents --id 1
 ```
 
-It first removes the checkpoint's optional FTS index, saves the complete ordered
-`(chunk_id, document_id)` result and basic `EXPLAIN`, creates the expression GIN index,
-and repeats both. It fails if any result pair or its order changes. On the recorded run
-the plan changed from Seq Scan + Sort to Bitmap Index Scan on the GIN + Bitmap Heap
-Scan + Sort; the planner was not forced either way, and a sequential scan would also
-have been acceptable on 160 rows. The script also verifies one AI-generated claim — that no
-sample chunk contains the substring `flight`, so the empty result is genuine — with an
-`ILIKE` count on the table (`C1/evidence/ai_claim_check.txt`).
+Counts and issues are in `docs/import-report.md` and `evidence/import-validation.json`.
+The repeat proof compares complete stored domain contents and source dispositions,
+with evidence in `evidence/import-repeat.json`. Audit attempt timestamps are allowed
+to change; domain records, aliases, links and issue records are not.
 
-The procedure, field mapping, named plans, design lines and the verified AI claim are
-written up in `C1/run.md`; `C1/manifest.tsv` records repo, revision, paths and SHA-256
-of the two source files. The human-readable SQL is in `sql/02_c1_queries.sql` (search)
-and `sql/03_c1_checks.sql` (integrity checks).
+## Section 7 queries and indexes
 
-For the literal comparison, FTS works with parsed and English-normalized lexemes, while
-`ILIKE '%flight%'` searches a raw character substring. Consequently, `flight` and
-`flights` match the same FTS lexeme, whereas `preflight` contains the substring but is
-not the separate FTS lexeme `flight`.
+After a complete import, install the query extension/indexes and run the workload:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/setup_z1_queries.py
+.\.venv\Scripts\python.exe scripts/run_z1_queries.py
+```
+
+The SQL is in `sql/queries.sql` and `sql/query-indexes.sql`. Setup safely reuses
+existing matching indexes; it installs `pg_trgm`, then records sizes and build
+durations in `evidence/query-indexes.json`. Complete query-result hashes, aggregate
+checks and basic plans are in `evidence/query-results.json`. These are section 7
+correctness checks, not the prescribed section 8 warm benchmark.
+
+For a presentation, show a few rows while still checking the complete result:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_z1_queries.py --query Q2 --name "Jeffrey Epstien" --threshold 0.3 --show-rows 5
+.\.venv\Scripts\python.exe scripts/run_z1_queries.py --query Q4_FILTER --currency USD --merchant FedEx --show-rows 5
+.\.venv\Scripts\python.exe scripts/run_z1_queries.py --query Q6_JSON --show-rows 5
+```
+
+The [workload report](docs/queries-and-indexes.md) explains all six questions, the
+financial/JSON drill-down variants, normalization, path multiplicity, currency and
+JSON semantics, index categories/opclasses and write costs. Synthetic query tests
+run with the same `Z1_DB_TESTS=1` command above and need no source download.
+
+## Section 8 full-input benchmark
+
+After section-7 setup, run one prescribed warm comparison:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/benchmark_z1.py
+```
+
+It benchmarks `Q6_JSON`, the Q6 drill-down for explicit JSON null subjects, against
+all accepted documents. It removes only `documents_email_object_gin`, runs one
+warm-up and three measured repetitions, recreates the same index, and repeats the
+same protocol. It compares the complete ordered results, keeps all constraints and
+other indexes active, and leaves the index present. A failed transaction restores
+the original index. Run while the database is idle: the index DDL locks documents
+during the comparison. No import runs concurrently.
+
+Query timers stop after the last row is fetched; hashing, printing, file writes and
+index building are excluded. All times, medians, full-result checks, basic plans,
+index size, environment and interpretation are in [benchmark.md](docs/benchmark.md)
+and `evidence/benchmark.json`. Repeat the command offline to regenerate them.
+The section-8 complete test suite passed 25 tests, including isolated benchmark
+equivalence and interruption/rollback tests; see `evidence/benchmark-tests.json`.
+
+## Section 9 R2 materialized financial report
+
+```powershell
+# Create/reuse the report, refresh it, then verify every group against full Q4.
+.\.venv\Scripts\python.exe scripts/extend_z1.py
+# Verify without refreshing.
+.\.venv\Scripts\python.exe scripts/extend_z1.py --check-only
+# Demonstrate stale data and refresh on separate synthetic data; no download needed.
+.\.venv\Scripts\python.exe scripts/extend_z1.py --demo
+```
+
+The stored `z1.financial_report` has one row per currency/normalized merchant
+label, with amount-state/sign counts and the exact valid amount sum. It covers all
+49,770 financial records and matches Q4's complete 18,392-group result. Changes
+that alter the reported aggregates leave it stale until refresh. The demo proves this, as well as repeated
+refresh and transaction rollback, in its own temporary schema.
+
+SQL is in `sql/extension.sql`; decisions, measured evidence, update costs and
+supervisor commands are in [extension.md](docs/extension.md). The latest complete
+suite passed 28 tests; see `evidence/extension-tests.json`. Original corpus records,
+constraints and section-7 indexes are preserved. Only R2 is implemented.
+
+## Section 10 AI report and defense
+
+The concise [ai-report.md](docs/ai-report.md) contains tool/model/date/purpose,
+representative prompts, one claim in the required five-column table, adopted and
+corrected parts, and recorded student decisions. The materialized-view claim is
+refined using the saved synthetic evidence: some source edits preserve the report
+result, while changes to the aggregate make it stale until refresh.
+
+## Section 11 submission
+
+Submit **one ZIP to the Z1 item in Teams**, named `Z1_Stroievskyi_Daniil.zip`.
+It contains the root README, requirements, Docker configuration, `.env.example`,
+`.gitignore`, source manifest, and the `scripts/`, `sql/`, `tests/`, `docs/` and
+small `evidence/` files. Reports retain their required filenames under `docs/`.
+The original dataset, database dump, real `.env`, virtual environment, caches,
+Git history, assignment PDF and historical C1 archive are excluded.
+
+Commit the full Z1 source, then create the archive for Teams using the committed
+source files. Do not commit the archive itself:
+
+```powershell
+git add -A
+git commit -m "Complete full Z1"
+```
+
+The ZIP must contain the root README, requirements, Docker configuration,
+`.env.example`, `.gitignore`, source manifest, scripts, SQL, tests, reports and
+small evidence files. Exclude the dataset, database dump, `.env`, virtual
+environment, caches, Git history, PDF and C1 archive. Later source/report/evidence
+changes require a new commit before creating a new submission ZIP.
+C1 belongs in its separate Teams submission. The individual defense is separate
+from uploading this source archive.
 
 ## Data safety
 
-The Parquet files, generated databases, dumps, credentials, and environment files are
-ignored by Git. Evidence contains only source IDs, counts, query plans, and index
-metadata—no document or chunk text.
+Do not commit source data, database dumps, credentials, virtual environments or caches.
+The manifest and small aggregate evidence are included in the full project. Source
+files remain unchanged; synthetic test records are separate from the source corpus.

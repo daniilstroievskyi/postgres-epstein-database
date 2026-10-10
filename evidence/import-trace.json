@@ -1,0 +1,43 @@
+[
+  {
+    "layer": "documents",
+    "file": "data/documents/documents-00000-of-00015.parquet",
+    "physical_row": 1,
+    "original_fields_checked": [
+      "id",
+      "file_key",
+      "dataset",
+      "full_text",
+      "document_type",
+      "date",
+      "is_photo",
+      "has_handwriting",
+      "has_stamps",
+      "ocr_source",
+      "additional_notes",
+      "page_number",
+      "document_number",
+      "char_count",
+      "created_at",
+      "email_fields"
+    ],
+    "exact_raw_values_match": true,
+    "stored_fingerprint_matches": true
+  },
+  {
+    "layer": "chunks",
+    "file": "data/chunks/chunks-00000-of-00011.parquet",
+    "physical_row": 1,
+    "original_fields_checked": [
+      "id",
+      "document_id",
+      "chunk_index",
+      "content",
+      "token_count",
+      "char_start",
+      "char_end"
+    ],
+    "exact_raw_values_match": true,
+    "stored_fingerprint_matches": true
+  }
+]

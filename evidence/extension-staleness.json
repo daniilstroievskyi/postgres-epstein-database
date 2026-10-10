@@ -1,0 +1,361 @@
+{
+  "executed_at": "2026-10-10T20:28:05.119370+00:00",
+  "synthetic_schema": "z1_r2_demo_6a7ad6e6fd14",
+  "source_records_before": 8,
+  "source_records_after": 8,
+  "initial": {
+    "direct": {
+      "rows": 4,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 1,
+        "zero_amount_records": 1,
+        "positive_amount_records": 3
+      }
+    },
+    "materialized": {
+      "rows": 4,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 1,
+        "zero_amount_records": 1,
+        "positive_amount_records": 3
+      }
+    },
+    "equal": true
+  },
+  "stale": {
+    "direct": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "materialized": {
+      "rows": 4,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 1,
+        "zero_amount_records": 1,
+        "positive_amount_records": 3
+      }
+    },
+    "equal": false
+  },
+  "refreshed": {
+    "direct": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "materialized": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "equal": true
+  },
+  "repeated": {
+    "direct": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "materialized": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "equal": true
+  },
+  "rolled_back": {
+    "direct": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "materialized": {
+      "rows": 3,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c31109aae22d41402cce131cacf9d6c118cd7af88f1961dc6de97a4025e91114",
+      "totals": {
+        "transaction_records": 8,
+        "valid_amount_records": 5,
+        "missing_amount_records": 2,
+        "invalid_amount_records": 1,
+        "negative_amount_records": 2,
+        "zero_amount_records": 1,
+        "positive_amount_records": 2
+      }
+    },
+    "equal": true
+  },
+  "initial_groups": [
+    {
+      "currency": null,
+      "merchant_search_value": "unknown merchant",
+      "transaction_records": 1,
+      "valid_amount_records": 1,
+      "missing_amount_records": 0,
+      "invalid_amount_records": 0,
+      "negative_amount_records": 0,
+      "zero_amount_records": 0,
+      "positive_amount_records": 1,
+      "amount_sum": null
+    },
+    {
+      "currency": "EUR",
+      "merchant_search_value": "demo merchant",
+      "transaction_records": 1,
+      "valid_amount_records": 1,
+      "missing_amount_records": 0,
+      "invalid_amount_records": 0,
+      "negative_amount_records": 0,
+      "zero_amount_records": 0,
+      "positive_amount_records": 1,
+      "amount_sum": "7"
+    },
+    {
+      "currency": "USD",
+      "merchant_search_value": "demo merchant",
+      "transaction_records": 5,
+      "valid_amount_records": 3,
+      "missing_amount_records": 1,
+      "invalid_amount_records": 1,
+      "negative_amount_records": 1,
+      "zero_amount_records": 1,
+      "positive_amount_records": 1,
+      "amount_sum": "10.00"
+    },
+    {
+      "currency": "USD",
+      "merchant_search_value": "missing only",
+      "transaction_records": 1,
+      "valid_amount_records": 0,
+      "missing_amount_records": 1,
+      "invalid_amount_records": 0,
+      "negative_amount_records": 0,
+      "zero_amount_records": 0,
+      "positive_amount_records": 0,
+      "amount_sum": null
+    }
+  ],
+  "refreshed_groups": [
+    {
+      "currency": null,
+      "merchant_search_value": "unknown merchant",
+      "transaction_records": 1,
+      "valid_amount_records": 1,
+      "missing_amount_records": 0,
+      "invalid_amount_records": 0,
+      "negative_amount_records": 0,
+      "zero_amount_records": 0,
+      "positive_amount_records": 1,
+      "amount_sum": null
+    },
+    {
+      "currency": "USD",
+      "merchant_search_value": "demo merchant",
+      "transaction_records": 6,
+      "valid_amount_records": 4,
+      "missing_amount_records": 1,
+      "invalid_amount_records": 1,
+      "negative_amount_records": 2,
+      "zero_amount_records": 1,
+      "positive_amount_records": 1,
+      "amount_sum": "13.00"
+    },
+    {
+      "currency": "USD",
+      "merchant_search_value": "missing only",
+      "transaction_records": 1,
+      "valid_amount_records": 0,
+      "missing_amount_records": 1,
+      "invalid_amount_records": 0,
+      "negative_amount_records": 0,
+      "zero_amount_records": 0,
+      "positive_amount_records": 0,
+      "amount_sum": null
+    }
+  ],
+  "corpus_modified": false,
+  "cleanup": "Synthetic schema dropped in the same transaction"
+}

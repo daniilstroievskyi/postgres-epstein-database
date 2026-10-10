@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-10T19:55:13.708497+00:00",
+  "indexes_unchanged": true,
+  "before": {
+    "chunks_fts_gin": [
+      1141982,
+      "CREATE INDEX chunks_fts_gin ON z1.chunks USING gin (to_tsvector('english'::regconfig, COALESCE(content, ''::text)))",
+      1287847936
+    ],
+    "persons_name_trgm_gin": [
+      1151025,
+      "CREATE INDEX persons_name_trgm_gin ON z1.persons USING gin (search_value gin_trgm_ops)",
+      278528
+    ],
+    "financial_currency_merchant_btree": [
+      1151026,
+      "CREATE INDEX financial_currency_merchant_btree ON z1.financial_transactions USING btree (currency, search_value)",
+      1990656
+    ],
+    "documents_email_object_gin": [
+      1151027,
+      "CREATE INDEX documents_email_object_gin ON z1.documents USING gin (email_fields jsonb_path_ops) WHERE ((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      81920
+    ]
+  },
+  "after": {
+    "chunks_fts_gin": [
+      1141982,
+      "CREATE INDEX chunks_fts_gin ON z1.chunks USING gin (to_tsvector('english'::regconfig, COALESCE(content, ''::text)))",
+      1287847936
+    ],
+    "persons_name_trgm_gin": [
+      1151025,
+      "CREATE INDEX persons_name_trgm_gin ON z1.persons USING gin (search_value gin_trgm_ops)",
+      278528
+    ],
+    "financial_currency_merchant_btree": [
+      1151026,
+      "CREATE INDEX financial_currency_merchant_btree ON z1.financial_transactions USING btree (currency, search_value)",
+      1990656
+    ],
+    "documents_email_object_gin": [
+      1151027,
+      "CREATE INDEX documents_email_object_gin ON z1.documents USING gin (email_fields jsonb_path_ops) WHERE ((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      81920
+    ]
+  }
+}

@@ -1,0 +1,901 @@
+{
+  "query": "Q6_JSON",
+  "expectation": "The JSONB @> containment query should benefit from the partial jsonb_path_ops GIN index: it can locate subject JSON null within the sparse valid-object subset instead of scanning the full documents table. This is a hypothesis, not a forced plan.",
+  "sql": "-- Drill-down of Q6, not a seventh independent analytical question.\n-- An explicit JSON null subject is different from SQL NULL or an absent key.\nSELECT d.source_id AS document_source_id, d.dataset, d.file_key,\n       d.email_fields_raw IS NOT NULL AS original_json_retained,\n       d.email_fields IS NULL AS parsed_is_sql_null,\n       d.email_fields ? 'subject' AS subject_key_present,\n       jsonb_typeof(d.email_fields -> 'subject') AS subject_value_type\nFROM \"z1\".documents d\nWHERE d.email_fields_state = 'valid'\n  AND jsonb_typeof(d.email_fields) = 'object'\n  AND d.email_fields @> '{\"subject\":null}'::jsonb\nORDER BY d.source_id;",
+  "sql_sha256": "092fffb063596abc99ad7d3577e253868461fca4d4933ed4000ef96884b0efc4",
+  "parameters": {
+    "subject_containment": "{\"subject\":null}",
+    "email_fields_state": "valid",
+    "json_type": "object"
+  },
+  "target_rows": 1424662,
+  "indexed_rows": 631,
+  "hash_format": "SHA256: columns as compact UTF-8 JSON, then every ordered row as compact UTF-8 JSON of typed values; each JSON block is prefixed by its 8-byte big-endian byte length. Types: null, bool, int (decimal string), text, float64 (IEEE hex), decimal (text). No deduplication or LIMIT; ORDER BY document source_id.",
+  "index": {
+    "name": "documents_email_object_gin",
+    "original": {
+      "table": "documents",
+      "method": "gin",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX documents_email_object_gin ON z1.documents USING gin (email_fields jsonb_path_ops) WHERE ((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "bytes": 81920,
+      "expression": null,
+      "predicate": "((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "keys": [
+        "email_fields"
+      ],
+      "opclasses": [
+        "jsonb_path_ops"
+      ]
+    },
+    "rebuilt": {
+      "table": "documents",
+      "method": "gin",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX documents_email_object_gin ON z1.documents USING gin (email_fields jsonb_path_ops) WHERE ((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "bytes": 81920,
+      "expression": null,
+      "predicate": "((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "keys": [
+        "email_fields"
+      ],
+      "opclasses": [
+        "jsonb_path_ops"
+      ]
+    },
+    "build_seconds": 0.22769950004294515
+  },
+  "before": {
+    "warmup": {
+      "seconds": 0.17007320001721382,
+      "rows": 20,
+      "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+    },
+    "measured": [
+      {
+        "seconds": 0.14476970001123846,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      },
+      {
+        "seconds": 0.16645409993361682,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      },
+      {
+        "seconds": 0.15376299992203712,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      }
+    ],
+    "median_seconds": 0.15376299992203712,
+    "columns": [
+      "document_source_id",
+      "dataset",
+      "file_key",
+      "original_json_retained",
+      "parsed_is_sql_null",
+      "subject_key_present",
+      "subject_value_type"
+    ],
+    "document_source_ids": [
+      849704,
+      1467034,
+      1468377,
+      1468837,
+      1469122,
+      1469146,
+      1469338,
+      1469389,
+      1469752,
+      1469802,
+      1469803,
+      1469838,
+      1469863,
+      1469872,
+      1469983,
+      1470058,
+      1470072,
+      1471640,
+      1472068,
+      1472080
+    ],
+    "plan": [
+      {
+        "Plan": {
+          "Node Type": "Sort",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 189387.3,
+          "Total Cost": 189387.31,
+          "Plan Rows": 1,
+          "Plan Width": 65,
+          "Disabled": false,
+          "Sort Key": [
+            "source_id"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Gather",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 1000.0,
+              "Total Cost": 189387.29,
+              "Plan Rows": 1,
+              "Plan Width": 65,
+              "Disabled": false,
+              "Workers Planned": 2,
+              "Single Copy": false,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": true,
+                  "Async Capable": false,
+                  "Relation Name": "documents",
+                  "Alias": "d",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 188387.19,
+                  "Plan Rows": 1,
+                  "Plan Width": 65,
+                  "Disabled": false,
+                  "Filter": "((email_fields @> '{\"subject\": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))"
+                }
+              ]
+            }
+          ]
+        },
+        "JIT": {
+          "Functions": 4,
+          "Options": {
+            "Inlining": false,
+            "Optimization": false,
+            "Expressions": true,
+            "Deforming": true
+          }
+        }
+      }
+    ],
+    "plan_text": "Sort  (cost=189387.30..189387.31 rows=1 width=65)\n  Sort Key: source_id\n  ->  Gather  (cost=1000.00..189387.29 rows=1 width=65)\n        Workers Planned: 2\n        ->  Parallel Seq Scan on documents d  (cost=0.00..188387.19 rows=1 width=65)\n              Filter: ((email_fields @> '{\"subject\": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))\nJIT:\n  Functions: 4\n  Options: Inlining false, Optimization false, Expressions true, Deforming true"
+  },
+  "after": {
+    "warmup": {
+      "seconds": 0.000564600108191371,
+      "rows": 20,
+      "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+    },
+    "measured": [
+      {
+        "seconds": 0.0005054000066593289,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      },
+      {
+        "seconds": 0.00040639995131641626,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      },
+      {
+        "seconds": 0.0003461999585852027,
+        "rows": 20,
+        "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b"
+      }
+    ],
+    "median_seconds": 0.00040639995131641626,
+    "columns": [
+      "document_source_id",
+      "dataset",
+      "file_key",
+      "original_json_retained",
+      "parsed_is_sql_null",
+      "subject_key_present",
+      "subject_value_type"
+    ],
+    "document_source_ids": [
+      849704,
+      1467034,
+      1468377,
+      1468837,
+      1469122,
+      1469146,
+      1469338,
+      1469389,
+      1469752,
+      1469802,
+      1469803,
+      1469838,
+      1469863,
+      1469872,
+      1469983,
+      1470058,
+      1470072,
+      1471640,
+      1472068,
+      1472080
+    ],
+    "plan": [
+      {
+        "Plan": {
+          "Node Type": "Sort",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 12.6,
+          "Total Cost": 12.6,
+          "Plan Rows": 1,
+          "Plan Width": 65,
+          "Disabled": false,
+          "Sort Key": [
+            "source_id"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Bitmap Heap Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "documents",
+              "Alias": "d",
+              "Startup Cost": 8.56,
+              "Total Cost": 12.59,
+              "Plan Rows": 1,
+              "Plan Width": 65,
+              "Disabled": false,
+              "Recheck Cond": "((email_fields @> '{\"subject\": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "documents_email_object_gin",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 8.56,
+                  "Plan Rows": 1,
+                  "Plan Width": 0,
+                  "Disabled": false,
+                  "Index Cond": "(email_fields @> '{\"subject\": null}'::jsonb)"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "plan_text": "Sort  (cost=12.60..12.60 rows=1 width=65)\n  Sort Key: source_id\n  ->  Bitmap Heap Scan on documents d  (cost=8.56..12.59 rows=1 width=65)\n        Recheck Cond: ((email_fields @> '{\"subject\": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))\n        ->  Bitmap Index Scan on documents_email_object_gin  (cost=0.00..8.56 rows=1 width=0)\n              Index Cond: (email_fields @> '{\"subject\": null}'::jsonb)"
+  },
+  "result_equivalence": true,
+  "controls": {
+    "same_data_snapshot": "Single REPEATABLE READ transaction; no INSERT/UPDATE/DELETE",
+    "import_exclusion": "z1-etl advisory lock acquired by main",
+    "constraints_active_validated": true,
+    "foreign_keys": 50,
+    "constraint_and_trigger_sha256": "d362758d574a082bb61cb3aa31f89096584e3aefc4a2cb00581abd01a4cde981",
+    "other_indexes_unchanged": true,
+    "other_indexes": [
+      [
+        "z1",
+        "chunks",
+        "chunks_document_id_chunk_index_key",
+        19319,
+        "CREATE UNIQUE INDEX chunks_document_id_chunk_index_key ON z1.chunks USING btree (document_id, chunk_index)",
+        true,
+        true,
+        true,
+        false,
+        104243200
+      ],
+      [
+        "z1",
+        "chunks",
+        "chunks_fts_gin",
+        1141982,
+        "CREATE INDEX chunks_fts_gin ON z1.chunks USING gin (to_tsvector('english'::regconfig, COALESCE(content, ''::text)))",
+        true,
+        true,
+        false,
+        false,
+        1287847936
+      ],
+      [
+        "z1",
+        "chunks",
+        "chunks_input_file_id_source_row_key",
+        19317,
+        "CREATE UNIQUE INDEX chunks_input_file_id_source_row_key ON z1.chunks USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        95207424
+      ],
+      [
+        "z1",
+        "chunks",
+        "chunks_pkey",
+        19315,
+        "CREATE UNIQUE INDEX chunks_pkey ON z1.chunks USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        75038720
+      ],
+      [
+        "z1",
+        "curated_annotations",
+        "curated_annotations_input_file_id_source_row_key",
+        19599,
+        "CREATE UNIQUE INDEX curated_annotations_input_file_id_source_row_key ON z1.curated_annotations USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        221184
+      ],
+      [
+        "z1",
+        "curated_annotations",
+        "curated_annotations_pkey",
+        19597,
+        "CREATE UNIQUE INDEX curated_annotations_pkey ON z1.curated_annotations USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        204800
+      ],
+      [
+        "z1",
+        "curated_document_links",
+        "curated_document_links_pkey",
+        19699,
+        "CREATE UNIQUE INDEX curated_document_links_pkey ON z1.curated_document_links USING btree (annotation_id, link_position)",
+        true,
+        true,
+        true,
+        true,
+        65536
+      ],
+      [
+        "z1",
+        "documents",
+        "documents_file_key_key",
+        19106,
+        "CREATE UNIQUE INDEX documents_file_key_key ON z1.documents USING btree (file_key)",
+        true,
+        true,
+        true,
+        false,
+        70778880
+      ],
+      [
+        "z1",
+        "documents",
+        "documents_input_file_id_source_row_key",
+        19104,
+        "CREATE UNIQUE INDEX documents_input_file_id_source_row_key ON z1.documents USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        57606144
+      ],
+      [
+        "z1",
+        "documents",
+        "documents_pkey",
+        19102,
+        "CREATE UNIQUE INDEX documents_pkey ON z1.documents USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        49160192
+      ],
+      [
+        "z1",
+        "event_participants",
+        "event_participants_input_file_id_source_row_key",
+        19434,
+        "CREATE UNIQUE INDEX event_participants_input_file_id_source_row_key ON z1.event_participants USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        196608
+      ],
+      [
+        "z1",
+        "event_participants",
+        "event_participants_pkey",
+        19432,
+        "CREATE UNIQUE INDEX event_participants_pkey ON z1.event_participants USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        147456
+      ],
+      [
+        "z1",
+        "event_sources",
+        "event_sources_input_file_id_source_row_key",
+        19469,
+        "CREATE UNIQUE INDEX event_sources_input_file_id_source_row_key ON z1.event_sources USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        1073152
+      ],
+      [
+        "z1",
+        "event_sources",
+        "event_sources_pkey",
+        19467,
+        "CREATE UNIQUE INDEX event_sources_pkey ON z1.event_sources USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        770048
+      ],
+      [
+        "z1",
+        "events",
+        "events_input_file_id_source_row_key",
+        19238,
+        "CREATE UNIQUE INDEX events_input_file_id_source_row_key ON z1.events USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        114688
+      ],
+      [
+        "z1",
+        "events",
+        "events_pkey",
+        19236,
+        "CREATE UNIQUE INDEX events_pkey ON z1.events USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        98304
+      ],
+      [
+        "z1",
+        "financial_transactions",
+        "financial_currency_merchant_btree",
+        1151026,
+        "CREATE INDEX financial_currency_merchant_btree ON z1.financial_transactions USING btree (currency, search_value)",
+        true,
+        true,
+        false,
+        false,
+        1990656
+      ],
+      [
+        "z1",
+        "financial_transactions",
+        "financial_transactions_input_file_id_source_row_key",
+        19547,
+        "CREATE UNIQUE INDEX financial_transactions_input_file_id_source_row_key ON z1.financial_transactions USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        1646592
+      ],
+      [
+        "z1",
+        "financial_transactions",
+        "financial_transactions_pkey",
+        19545,
+        "CREATE UNIQUE INDEX financial_transactions_pkey ON z1.financial_transactions USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        1187840
+      ],
+      [
+        "z1",
+        "kg_edges",
+        "kg_edges_input_file_id_source_row_key",
+        19397,
+        "CREATE UNIQUE INDEX kg_edges_input_file_id_source_row_key ON z1.kg_edges USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        90112
+      ],
+      [
+        "z1",
+        "kg_edges",
+        "kg_edges_pkey",
+        19395,
+        "CREATE UNIQUE INDEX kg_edges_pkey ON z1.kg_edges USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        65536
+      ],
+      [
+        "z1",
+        "kg_nodes",
+        "kg_nodes_input_file_id_source_row_key",
+        19178,
+        "CREATE UNIQUE INDEX kg_nodes_input_file_id_source_row_key ON z1.kg_nodes USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        32768
+      ],
+      [
+        "z1",
+        "kg_nodes",
+        "kg_nodes_pkey",
+        19176,
+        "CREATE UNIQUE INDEX kg_nodes_pkey ON z1.kg_nodes USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        32768
+      ],
+      [
+        "z1",
+        "mentions",
+        "mentions_input_file_id_source_row_key",
+        19354,
+        "CREATE UNIQUE INDEX mentions_input_file_id_source_row_key ON z1.mentions USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        335306752
+      ],
+      [
+        "z1",
+        "mentions",
+        "mentions_pkey",
+        19352,
+        "CREATE UNIQUE INDEX mentions_pkey ON z1.mentions USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        238813184
+      ],
+      [
+        "z1",
+        "person_aliases",
+        "person_aliases_pkey",
+        19680,
+        "CREATE UNIQUE INDEX person_aliases_pkey ON z1.person_aliases USING btree (person_id, alias_position)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ],
+      [
+        "z1",
+        "persons",
+        "persons_input_file_id_source_row_key",
+        19147,
+        "CREATE UNIQUE INDEX persons_input_file_id_source_row_key ON z1.persons USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        73728
+      ],
+      [
+        "z1",
+        "persons",
+        "persons_name_trgm_gin",
+        1151025,
+        "CREATE INDEX persons_name_trgm_gin ON z1.persons USING gin (search_value gin_trgm_ops)",
+        true,
+        true,
+        false,
+        false,
+        278528
+      ],
+      [
+        "z1",
+        "persons",
+        "persons_pkey",
+        19145,
+        "CREATE UNIQUE INDEX persons_pkey ON z1.persons USING btree (source_id)",
+        true,
+        true,
+        true,
+        true,
+        57344
+      ],
+      [
+        "z1",
+        "upstream_files",
+        "upstream_files_input_file_id_source_row_key",
+        19647,
+        "CREATE UNIQUE INDEX upstream_files_input_file_id_source_row_key ON z1.upstream_files USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        45473792
+      ],
+      [
+        "z1",
+        "upstream_files",
+        "upstream_files_pkey",
+        19645,
+        "CREATE UNIQUE INDEX upstream_files_pkey ON z1.upstream_files USING btree (output_name, file_key)",
+        true,
+        true,
+        true,
+        true,
+        82649088
+      ],
+      [
+        "z1",
+        "upstream_runs",
+        "upstream_runs_input_file_id_source_row_key",
+        19284,
+        "CREATE UNIQUE INDEX upstream_runs_input_file_id_source_row_key ON z1.upstream_runs USING btree (input_file_id, source_row)",
+        true,
+        true,
+        true,
+        false,
+        16384
+      ],
+      [
+        "z1",
+        "upstream_runs",
+        "upstream_runs_pkey",
+        19282,
+        "CREATE UNIQUE INDEX upstream_runs_pkey ON z1.upstream_runs USING btree (run_id)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ],
+      [
+        "z1_audit",
+        "duplicate_rows",
+        "duplicate_rows_pkey",
+        19049,
+        "CREATE UNIQUE INDEX duplicate_rows_pkey ON z1_audit.duplicate_rows USING btree (file_id, source_row)",
+        true,
+        true,
+        true,
+        true,
+        8192
+      ],
+      [
+        "z1_audit",
+        "import_batches",
+        "import_batches_pkey",
+        18980,
+        "CREATE UNIQUE INDEX import_batches_pkey ON z1_audit.import_batches USING btree (file_id, start_row)",
+        true,
+        true,
+        true,
+        true,
+        270336
+      ],
+      [
+        "z1_audit",
+        "import_issues",
+        "import_issues_pkey",
+        19003,
+        "CREATE UNIQUE INDEX import_issues_pkey ON z1_audit.import_issues USING btree (file_id, source_row, field, code)",
+        true,
+        true,
+        true,
+        true,
+        870006784
+      ],
+      [
+        "z1_audit",
+        "import_runs",
+        "import_runs_pkey",
+        18938,
+        "CREATE UNIQUE INDEX import_runs_pkey ON z1_audit.import_runs USING btree (run_id)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ],
+      [
+        "z1_audit",
+        "load_state",
+        "load_state_pkey",
+        18922,
+        "CREATE UNIQUE INDEX load_state_pkey ON z1_audit.load_state USING btree (singleton)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ],
+      [
+        "z1_audit",
+        "quarantined_rows",
+        "quarantined_rows_pkey",
+        19025,
+        "CREATE UNIQUE INDEX quarantined_rows_pkey ON z1_audit.quarantined_rows USING btree (file_id, source_row)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ],
+      [
+        "z1_audit",
+        "source_files",
+        "source_files_path_key",
+        18958,
+        "CREATE UNIQUE INDEX source_files_path_key ON z1_audit.source_files USING btree (path)",
+        true,
+        true,
+        true,
+        false,
+        16384
+      ],
+      [
+        "z1_audit",
+        "source_files",
+        "source_files_pkey",
+        18956,
+        "CREATE UNIQUE INDEX source_files_pkey ON z1_audit.source_files USING btree (file_id)",
+        true,
+        true,
+        true,
+        true,
+        16384
+      ]
+    ],
+    "planner_forced": false,
+    "client_auto_prepare": false,
+    "analyze_or_cache_reset_or_restart": false,
+    "repetitions_per_variant": {
+      "warmup": 1,
+      "measured": 3
+    }
+  },
+  "timing": "perf_counter immediately before cursor.execute(SQL) through cursor.fetchall(); same unnamed psycopg cursor type with prepare=False for both variants; hashing, plans, index DDL, transaction setup/commit, rendering and file writes are outside query timing",
+  "executed_at": "2026-10-10T20:16:11.794857+00:00",
+  "completed_at": "2026-10-10T20:16:15.718983+00:00",
+  "repo_id": "kabasshouse/epstein-data",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "environment": {
+    "python": "3.13.7",
+    "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "extensions": {
+      "pg_trgm": "1.6",
+      "plpgsql": "1.0"
+    },
+    "database_locale": [
+      "en_US.utf8",
+      "en_US.utf8"
+    ],
+    "settings": {
+      "maintenance_work_mem": {
+        "value": "65536",
+        "unit": "kB"
+      },
+      "max_parallel_workers_per_gather": {
+        "value": "2",
+        "unit": null
+      },
+      "shared_buffers": {
+        "value": "16384",
+        "unit": "8kB"
+      },
+      "work_mem": {
+        "value": "4096",
+        "unit": "kB"
+      }
+    },
+    "psycopg": "3.3.6",
+    "client_os": "Windows-11-10.0.26200-SP0",
+    "client_logical_cpus": 24,
+    "resource_note": "Intel Core i7-14650HX; host 24 logical CPUs and 16944848896 bytes RAM; Docker Linux backend 24 logical CPUs and 8204201984 bytes RAM; container has no additional CPU or RAM limit."
+  },
+  "source_accounting": {
+    "chunks": {
+      "read": 2193090,
+      "accepted": 2193027,
+      "quarantined": 63,
+      "duplicate": 0
+    },
+    "curated_docs": {
+      "read": 5766,
+      "accepted": 5766,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "derived_events": {
+      "read": 3038,
+      "accepted": 3038,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "documents": {
+      "read": 1424673,
+      "accepted": 1424662,
+      "quarantined": 11,
+      "duplicate": 0
+    },
+    "entities": {
+      "read": 10629198,
+      "accepted": 10629198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "event_participants": {
+      "read": 5751,
+      "accepted": 5751,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "event_sources": {
+      "read": 21910,
+      "accepted": 21910,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "financial_transactions": {
+      "read": 49770,
+      "accepted": 49770,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "kg_entities": {
+      "read": 467,
+      "accepted": 467,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "kg_relationships": {
+      "read": 2198,
+      "accepted": 2198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "persons": {
+      "read": 1614,
+      "accepted": 1614,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "provenance/files": {
+      "read": 1387775,
+      "accepted": 1387775,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "provenance/runs": {
+      "read": 123,
+      "accepted": 123,
+      "quarantined": 0,
+      "duplicate": 0
+    }
+  },
+  "content_identity": "5f2c75c1975dc8535118e0c9f0bc423f5c87f91a1d6d8d9e7db08677d954c0ed"
+}

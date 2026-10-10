@@ -1,0 +1,1272 @@
+{
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "generated_at": "2026-10-10T16:38:01.654254+00:00",
+  "layers": {
+    "documents": {
+      "rows": 1424673,
+      "expected_rows": 1424673,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "file_key",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "dataset",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "full_text",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 511
+        },
+        {
+          "name": "document_type",
+          "type": "VARCHAR",
+          "null": 564974,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "date",
+          "type": "VARCHAR",
+          "null": 637074,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "is_photo",
+          "type": "BOOLEAN",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "has_handwriting",
+          "type": "BOOLEAN",
+          "null": 56820,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "has_stamps",
+          "type": "BOOLEAN",
+          "null": 56820,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "ocr_source",
+          "type": "VARCHAR",
+          "null": 884769,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "additional_notes",
+          "type": "VARCHAR",
+          "null": 554401,
+          "empty_or_whitespace": 1327
+        },
+        {
+          "name": "page_number",
+          "type": "VARCHAR",
+          "null": 1055932,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "document_number",
+          "type": "VARCHAR",
+          "null": 1352329,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "char_count",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "created_at",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "email_fields",
+          "type": "VARCHAR",
+          "null": 1424038,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 1424673,
+          "distinct": 1424673,
+          "extra_occurrences": 0
+        },
+        "file_key": {
+          "nonnull": 1424673,
+          "distinct": 1424673,
+          "extra_occurrences": 0
+        },
+        "dataset,file_key": {
+          "groups": 1424673,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {
+        "date": {
+          "nonblank": 787599,
+          "year_only": 1209,
+          "month_only": 10,
+          "not_castable_as_timestamp": 752558
+        },
+        "created_at": {
+          "nonblank": 1424673,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "email_fields": {
+          "sql_null": 1424038,
+          "blank": 0,
+          "invalid_json_nonblank": 0,
+          "json_null": 0,
+          "valid_nonnull_json": 635
+        }
+      }
+    },
+    "chunks": {
+      "rows": 2193090,
+      "expected_rows": 2193090,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "document_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "chunk_index",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "content",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "token_count",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "char_start",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "char_end",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 2193090,
+          "distinct": 2193090,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "entities": {
+      "rows": 10629198,
+      "expected_rows": 10629198,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "document_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "entity_type",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "value",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "normalized_value",
+          "type": "VARCHAR",
+          "null": 10629198,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 10629198,
+          "distinct": 10629198,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "persons": {
+      "rows": 1614,
+      "expected_rows": 1614,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "canonical_name",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "slug",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "aliases",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "search_terms",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "sources",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "notes",
+          "type": "VARCHAR",
+          "null": 1614,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 1614,
+          "distinct": 1614,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "kg_entities": {
+      "rows": 467,
+      "expected_rows": 467,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "entity_type",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR",
+          "null": 467,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "metadata",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 467,
+          "distinct": 467,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "kg_relationships": {
+      "rows": 2198,
+      "expected_rows": 2198,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "source_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "target_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "relationship_type",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "weight",
+          "type": "DOUBLE",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "evidence",
+          "type": "VARCHAR",
+          "null": 2198,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "metadata",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 2198,
+          "distinct": 2198,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "derived_events": {
+      "rows": 3038,
+      "expected_rows": 3038,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "event_date",
+          "type": "VARCHAR",
+          "null": 26,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "event_end_date",
+          "type": "VARCHAR",
+          "null": 2973,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "track",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "headline",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "location",
+          "type": "VARCHAR",
+          "null": 1007,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "amount",
+          "type": "DOUBLE",
+          "null": 2700,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "payer",
+          "type": "VARCHAR",
+          "null": 3038,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "payee",
+          "type": "VARCHAR",
+          "null": 3036,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "route_from",
+          "type": "VARCHAR",
+          "null": 2766,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "route_to",
+          "type": "VARCHAR",
+          "null": 2766,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "aircraft",
+          "type": "VARCHAR",
+          "null": 3038,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "time_of_day",
+          "type": "VARCHAR",
+          "null": 1361,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "confidence",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "narrative",
+          "type": "VARCHAR",
+          "null": 7,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 3038,
+          "distinct": 3038,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {
+        "event_date": {
+          "nonblank": 3012,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "event_end_date": {
+          "nonblank": 65,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "amount": {
+          "missing": 2700,
+          "nonfinite": 0,
+          "negative": 0,
+          "zero": 0,
+          "positive": 338
+        }
+      }
+    },
+    "event_participants": {
+      "rows": 5751,
+      "expected_rows": 5751,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "event_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "person_name",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "role",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 5751,
+          "distinct": 5751,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {}
+    },
+    "event_sources": {
+      "rows": 21910,
+      "expected_rows": 21910,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "event_id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "file_key",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 21910,
+          "distinct": 21910,
+          "extra_occurrences": 0
+        },
+        "file_key": {
+          "nonnull": 21910,
+          "distinct": 720,
+          "extra_occurrences": 21190
+        }
+      },
+      "value_checks": {}
+    },
+    "financial_transactions": {
+      "rows": 49770,
+      "expected_rows": 49770,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "file_key",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "dataset",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "transaction_date",
+          "type": "VARCHAR",
+          "null": 269,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "amount",
+          "type": "DOUBLE",
+          "null": 551,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "merchant_name",
+          "type": "VARCHAR",
+          "null": 295,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "merchant_raw",
+          "type": "VARCHAR",
+          "null": 23954,
+          "empty_or_whitespace": 1
+        },
+        {
+          "name": "merchant_category",
+          "type": "VARCHAR",
+          "null": 61,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "location",
+          "type": "VARCHAR",
+          "null": 42979,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "cardholder",
+          "type": "VARCHAR",
+          "null": 7590,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR",
+          "null": 25905,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "card_type",
+          "type": "VARCHAR",
+          "null": 48722,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "account_digits",
+          "type": "VARCHAR",
+          "null": 38994,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "statement_date",
+          "type": "VARCHAR",
+          "null": 6782,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_from",
+          "type": "VARCHAR",
+          "null": 49702,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_to",
+          "type": "VARCHAR",
+          "null": 49703,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_carrier",
+          "type": "VARCHAR",
+          "null": 49695,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_departure",
+          "type": "VARCHAR",
+          "null": 49702,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_ticket",
+          "type": "VARCHAR",
+          "null": 49700,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "flight_passenger",
+          "type": "VARCHAR",
+          "null": 49753,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "source_page",
+          "type": "INTEGER",
+          "null": 49770,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "extraction_model",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "extraction_confidence",
+          "type": "DOUBLE",
+          "null": 49770,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 49770,
+          "distinct": 49770,
+          "extra_occurrences": 0
+        },
+        "file_key": {
+          "nonnull": 49770,
+          "distinct": 4614,
+          "extra_occurrences": 45156
+        },
+        "dataset,file_key": {
+          "groups": 4614,
+          "extra_occurrences": 45156
+        }
+      },
+      "value_checks": {
+        "transaction_date": {
+          "nonblank": 49501,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "amount": {
+          "missing": 551,
+          "nonfinite": 0,
+          "negative": 18237,
+          "zero": 532,
+          "positive": 30450
+        },
+        "statement_date": {
+          "nonblank": 42988,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        }
+      }
+    },
+    "curated_docs": {
+      "rows": 5766,
+      "expected_rows": 5766,
+      "schema": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "file_key",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "subject",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "tier",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "doc_date",
+          "type": "VARCHAR",
+          "null": 165,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "doc_from",
+          "type": "VARCHAR",
+          "null": 681,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "doc_to",
+          "type": "VARCHAR",
+          "null": 961,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "headline",
+          "type": "VARCHAR",
+          "null": 8,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "key_quote",
+          "type": "VARCHAR",
+          "null": 138,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "detail",
+          "type": "VARCHAR",
+          "null": 40,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "thread_value",
+          "type": "VARCHAR",
+          "null": 783,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "also_appears_as",
+          "type": "VARCHAR",
+          "null": 4928,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "id": {
+          "nonnull": 5766,
+          "distinct": 5766,
+          "extra_occurrences": 0
+        },
+        "file_key": {
+          "nonnull": 5766,
+          "distinct": 5662,
+          "extra_occurrences": 104
+        }
+      },
+      "value_checks": {
+        "doc_date": {
+          "nonblank": 5601,
+          "year_only": 60,
+          "month_only": 39,
+          "not_castable_as_timestamp": 1268
+        }
+      }
+    },
+    "provenance/runs": {
+      "rows": 123,
+      "expected_rows": 123,
+      "schema": [
+        {
+          "name": "run_id",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "started_at",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "completed_at",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "input_dir",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_name",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "model",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "dpi",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "workers",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "rpm",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "git_commit",
+          "type": "VARCHAR",
+          "null": 11,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "hostname",
+          "type": "VARCHAR",
+          "null": 1,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "total_files",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "success_count",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "fail_count",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "input_tokens",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_tokens",
+          "type": "BIGINT",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "cost_usd",
+          "type": "DOUBLE",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "last_heartbeat",
+          "type": "VARCHAR",
+          "null": 100,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "run_id": {
+          "nonnull": 123,
+          "distinct": 123,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {
+        "started_at": {
+          "nonblank": 123,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "completed_at": {
+          "nonblank": 123,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        }
+      }
+    },
+    "provenance/files": {
+      "rows": 1387775,
+      "expected_rows": 1387775,
+      "schema": [
+        {
+          "name": "file_key",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_name",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "pdf_path",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "pdf_sha256",
+          "type": "VARCHAR",
+          "null": 538933,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "pdf_size_bytes",
+          "type": "BIGINT",
+          "null": 538933,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_path",
+          "type": "VARCHAR",
+          "null": 2,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_sha256",
+          "type": "VARCHAR",
+          "null": 2,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "first_seen_at",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "processed_at",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "run_id",
+          "type": "VARCHAR",
+          "null": 63676,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "input_tokens",
+          "type": "BIGINT",
+          "null": 602786,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "output_tokens",
+          "type": "BIGINT",
+          "null": 602786,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "api_latency_ms",
+          "type": "BIGINT",
+          "null": 602786,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "attempts",
+          "type": "INTEGER",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "error_message",
+          "type": "VARCHAR",
+          "null": 1383206,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "model_used",
+          "type": "VARCHAR",
+          "null": 0,
+          "empty_or_whitespace": 0
+        },
+        {
+          "name": "validation_score",
+          "type": "INTEGER",
+          "null": 650620,
+          "empty_or_whitespace": 0
+        }
+      ],
+      "candidate_keys": {
+        "file_key": {
+          "nonnull": 1387775,
+          "distinct": 1387767,
+          "extra_occurrences": 8
+        },
+        "run_id": {
+          "nonnull": 1324099,
+          "distinct": 83,
+          "extra_occurrences": 1324016
+        },
+        "output_name,file_key": {
+          "groups": 1387775,
+          "extra_occurrences": 0
+        }
+      },
+      "value_checks": {
+        "first_seen_at": {
+          "nonblank": 1387775,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        },
+        "processed_at": {
+          "nonblank": 1387775,
+          "year_only": 0,
+          "month_only": 0,
+          "not_castable_as_timestamp": 0
+        }
+      }
+    }
+  },
+  "references": {
+    "chunks.document_id -> documents.id": {
+      "read": 2193090,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 2193090,
+      "ambiguous_equal_key": 0
+    },
+    "entities.document_id -> documents.id": {
+      "read": 10629198,
+      "missing": 0,
+      "unmatched": 78,
+      "single_equal_key": 10629120,
+      "ambiguous_equal_key": 0
+    },
+    "event_participants.event_id -> derived_events.id": {
+      "read": 5751,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 5751,
+      "ambiguous_equal_key": 0
+    },
+    "event_sources.event_id -> derived_events.id": {
+      "read": 21910,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 21910,
+      "ambiguous_equal_key": 0
+    },
+    "event_sources.file_key -> documents.file_key": {
+      "read": 21910,
+      "missing": 0,
+      "unmatched": 16651,
+      "single_equal_key": 5259,
+      "ambiguous_equal_key": 0
+    },
+    "financial_transactions.file_key -> documents.file_key": {
+      "read": 49770,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 49770,
+      "ambiguous_equal_key": 0
+    },
+    "curated_docs.file_key -> documents.file_key": {
+      "read": 5766,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 5766,
+      "ambiguous_equal_key": 0
+    },
+    "provenance/files.run_id -> provenance/runs.run_id": {
+      "read": 1387775,
+      "missing": 63676,
+      "unmatched": 0,
+      "single_equal_key": 1324099,
+      "ambiguous_equal_key": 0
+    },
+    "kg_relationships.source_id -> kg_entities.id": {
+      "read": 2198,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 2198,
+      "ambiguous_equal_key": 0
+    },
+    "kg_relationships.target_id -> kg_entities.id": {
+      "read": 2198,
+      "missing": 0,
+      "unmatched": 0,
+      "single_equal_key": 2198,
+      "ambiguous_equal_key": 0
+    }
+  }
+}

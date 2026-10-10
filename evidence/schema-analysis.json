@@ -1,0 +1,343 @@
+{
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "manifest_sha256": "581285ef99120b995b0d9093632de1ba1d239e5b073e9b0c6bca0bb0638a8a0d",
+  "generated_at": "2026-10-10T17:07:05.388436+00:00",
+  "note": "Aggregate diagnostics only; equality is not proof of identity.",
+  "checks": {
+    "chunk_keys_and_offsets": [
+      {
+        "rows": 2193090,
+        "document_index_groups": 2193090,
+        "invalid_basic_bounds": 0,
+        "min_chunk_index": 0,
+        "max_chunk_index": 2498
+      }
+    ],
+    "chunk_offsets_vs_document_char_count": [
+      {
+        "rows": 2193090,
+        "end_exceeds_reported_document_length": 14863
+      }
+    ],
+    "chunk_offsets_vs_actual_document_length": [
+      {
+        "chunk_rows": 2193090,
+        "end_exceeds_actual_document_length": 81,
+        "chunks_with_parent_reported_length_disagreement": 15232
+      }
+    ],
+    "entity_id_ranges": [
+      {
+        "layer": "documents",
+        "min_id": 1,
+        "max_id": 1528459
+      },
+      {
+        "layer": "entities",
+        "min_id": 1,
+        "max_id": 11928200
+      },
+      {
+        "layer": "entities.document_id",
+        "min_id": 1,
+        "max_id": 1528459
+      }
+    ],
+    "finance_currencies": [
+      {
+        "currency": "USD",
+        "rows": 49770,
+        "missing_amount": 551,
+        "negative_amount": 18237,
+        "not_equal_to_two_decimal_rounding": 38
+      }
+    ],
+    "finance_document_dataset_consistency": [
+      {
+        "matched_rows": 49770,
+        "dataset_disagreements": 482
+      }
+    ],
+    "provenance_document_candidates": [
+      {
+        "rows": 1387775,
+        "unmatched_file_keys": 5,
+        "matched_file_keys": 1387770
+      }
+    ],
+    "person_slug_keys": [
+      {
+        "rows": 1614,
+        "distinct_slugs": 1608
+      }
+    ],
+    "json:documents.email_fields": [
+      {
+        "rows": 1424673,
+        "sql_null": 1424038,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 4,
+        "objects": 631,
+        "other_valid": 0
+      }
+    ],
+    "json:persons.aliases": [
+      {
+        "rows": 1614,
+        "sql_null": 0,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 1614,
+        "objects": 0,
+        "other_valid": 0
+      }
+    ],
+    "json:persons.search_terms": [
+      {
+        "rows": 1614,
+        "sql_null": 0,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 1614,
+        "objects": 0,
+        "other_valid": 0
+      }
+    ],
+    "json:persons.sources": [
+      {
+        "rows": 1614,
+        "sql_null": 0,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 1614,
+        "objects": 0,
+        "other_valid": 0
+      }
+    ],
+    "json:kg_entities.metadata": [
+      {
+        "rows": 467,
+        "sql_null": 0,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 0,
+        "objects": 467,
+        "other_valid": 0
+      }
+    ],
+    "json:kg_relationships.metadata": [
+      {
+        "rows": 2198,
+        "sql_null": 0,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 0,
+        "objects": 2198,
+        "other_valid": 0
+      }
+    ],
+    "json:curated_docs.also_appears_as": [
+      {
+        "rows": 5766,
+        "sql_null": 4928,
+        "blank": 0,
+        "invalid_nonblank": 0,
+        "json_null": 0,
+        "arrays": 838,
+        "objects": 0,
+        "other_valid": 0
+      }
+    ],
+    "person_alias_array_elements": [
+      {
+        "element_type": "VARCHAR",
+        "elements": 241
+      }
+    ],
+    "curated_alternate_file_array_elements": [
+      {
+        "element_type": "VARCHAR",
+        "elements": 1445
+      }
+    ],
+    "date_syntax:documents.date": [
+      {
+        "category": "day_syntax",
+        "rows": 20131
+      },
+      {
+        "category": "month_syntax",
+        "rows": 10
+      },
+      {
+        "category": "other_syntax",
+        "rows": 766232
+      },
+      {
+        "category": "sql_null",
+        "rows": 637074
+      },
+      {
+        "category": "timestamp_syntax",
+        "rows": 17
+      },
+      {
+        "category": "year_syntax",
+        "rows": 1209
+      }
+    ],
+    "date_syntax:documents.created_at": [
+      {
+        "category": "timestamp_syntax",
+        "rows": 1424673
+      }
+    ],
+    "date_syntax:derived_events.event_date": [
+      {
+        "category": "day_syntax",
+        "rows": 3012
+      },
+      {
+        "category": "sql_null",
+        "rows": 26
+      }
+    ],
+    "date_syntax:derived_events.event_end_date": [
+      {
+        "category": "day_syntax",
+        "rows": 65
+      },
+      {
+        "category": "sql_null",
+        "rows": 2973
+      }
+    ],
+    "date_syntax:financial_transactions.transaction_date": [
+      {
+        "category": "day_syntax",
+        "rows": 49501
+      },
+      {
+        "category": "sql_null",
+        "rows": 269
+      }
+    ],
+    "date_syntax:financial_transactions.statement_date": [
+      {
+        "category": "day_syntax",
+        "rows": 42988
+      },
+      {
+        "category": "sql_null",
+        "rows": 6782
+      }
+    ],
+    "date_syntax:curated_docs.doc_date": [
+      {
+        "category": "day_syntax",
+        "rows": 4343
+      },
+      {
+        "category": "month_syntax",
+        "rows": 39
+      },
+      {
+        "category": "other_syntax",
+        "rows": 1159
+      },
+      {
+        "category": "sql_null",
+        "rows": 165
+      },
+      {
+        "category": "year_syntax",
+        "rows": 60
+      }
+    ],
+    "date_syntax:provenance_runs.started_at": [
+      {
+        "category": "timestamp_syntax",
+        "rows": 123
+      }
+    ],
+    "date_syntax:provenance_runs.completed_at": [
+      {
+        "category": "timestamp_syntax",
+        "rows": 123
+      }
+    ],
+    "date_syntax:provenance_runs.last_heartbeat": [
+      {
+        "category": "sql_null",
+        "rows": 100
+      },
+      {
+        "category": "timestamp_syntax",
+        "rows": 23
+      }
+    ],
+    "date_syntax:provenance_files.first_seen_at": [
+      {
+        "category": "timestamp_syntax",
+        "rows": 1387775
+      }
+    ],
+    "date_syntax:provenance_files.processed_at": [
+      {
+        "category": "timestamp_syntax",
+        "rows": 1387775
+      }
+    ],
+    "email_object_key_presence": [
+      {
+        "valid_objects": 631,
+        "subject_key_present": 631,
+        "subject_key_absent": 0,
+        "subject_json_null": 20
+      }
+    ],
+    "timezone_syntax:documents.created_at": [
+      {
+        "nonnull": 1424673,
+        "explicit_zone_suffix": 0
+      }
+    ],
+    "timezone_syntax:provenance_runs.started_at": [
+      {
+        "nonnull": 123,
+        "explicit_zone_suffix": 123
+      }
+    ],
+    "timezone_syntax:provenance_runs.completed_at": [
+      {
+        "nonnull": 123,
+        "explicit_zone_suffix": 120
+      }
+    ],
+    "timezone_syntax:provenance_runs.last_heartbeat": [
+      {
+        "nonnull": 23,
+        "explicit_zone_suffix": 23
+      }
+    ],
+    "timezone_syntax:provenance_files.first_seen_at": [
+      {
+        "nonnull": 1387775,
+        "explicit_zone_suffix": 1387637
+      }
+    ],
+    "timezone_syntax:provenance_files.processed_at": [
+      {
+        "nonnull": 1387775,
+        "explicit_zone_suffix": 1383485
+      }
+    ]
+  }
+}

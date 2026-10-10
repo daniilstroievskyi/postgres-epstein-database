@@ -1,0 +1,160 @@
+{
+  "verified_at": "2026-10-10T19:21:49.588323+00:00",
+  "run_id": "9ee8267b-bae0-4ed2-9c86-480a68e7ee31",
+  "same_complete_contents": true,
+  "newly_read": 0,
+  "before": {
+    "documents": {
+      "rows": 1424662,
+      "sha256": "1a49718d42afb7f783bc764cc3b90890a93f4c1ff7e5bff2eb64225b3aa44f1c"
+    },
+    "persons": {
+      "rows": 1614,
+      "sha256": "9550350c710f6da19aaaeebc05fa9f7f4d95a66afe8f38fea59d22a655deebab"
+    },
+    "kg_nodes": {
+      "rows": 467,
+      "sha256": "85fd2d11f1f6ab124a71730385c06ae2b15024310f958cdc098df0e5ae7b6022"
+    },
+    "events": {
+      "rows": 3038,
+      "sha256": "afbbdd52a3e8807eb94f05007daf9067dd235ce9758e4a6d5dbf5139d2d1930b"
+    },
+    "upstream_runs": {
+      "rows": 123,
+      "sha256": "1a6500623ebc9350ed78b05d6d13803cf5694245cc3ef7d35a08946302c46d07"
+    },
+    "chunks": {
+      "rows": 2193027,
+      "sha256": "a2c2eda033fe6c07fac901914881e9a91acf12c6e0e68a648c55367fcc352cbc"
+    },
+    "mentions": {
+      "rows": 10629198,
+      "sha256": "f42eec3b97cfb108a8a8ac313e298f2fbec128a5b66426d70b534adb2b173f34"
+    },
+    "kg_edges": {
+      "rows": 2198,
+      "sha256": "1f3d92ee7d68f8c3c2d4e59f2ff4196085d6fa67041acf46f5259f2a5dcf019d"
+    },
+    "event_participants": {
+      "rows": 5751,
+      "sha256": "a32998856b4be53314d1e77cf29128229c4307fe412f6253b501a9c837cc9f3e"
+    },
+    "event_sources": {
+      "rows": 21910,
+      "sha256": "b425415c4ec9ce683cd8faf86b151fe8f2267b37dae94fe575ef7a591c8c2bf4"
+    },
+    "financial_transactions": {
+      "rows": 49770,
+      "sha256": "eee7d6663f30d80732b0a462ebf68039e7dfaab3a2d201e68c3cb2d5bcdd2b5a"
+    },
+    "curated_annotations": {
+      "rows": 5766,
+      "sha256": "8f664eaa8a98d9c292d59822e4474d87e4d2656b8d3cf5e15a1e38681d479041"
+    },
+    "upstream_files": {
+      "rows": 1387775,
+      "sha256": "4aeed0c8a364533a7d8dc72f72268d69877496a669baaf4f7abedcd93a277846"
+    },
+    "person_aliases": {
+      "rows": 241,
+      "sha256": "33aedb95d878c9843b6d9baddd026b20ec0ead67e7d86b9681291c0be93195a0"
+    },
+    "curated_document_links": {
+      "rows": 1445,
+      "sha256": "a795a4ed8c43da14e42aa130d442b7dcbda777ce02a9b9214f0f06a40c6c178c"
+    },
+    "audit.import_issues": {
+      "rows": 11492441,
+      "sha256": "fc586c5000f14b289599f9686a88a1605b28ec03a7936fdbdca77f6037a8ddb6"
+    },
+    "audit.quarantined_rows": {
+      "rows": 74,
+      "sha256": "6419916f54257c19f32f6b3092bbeaa0a12fb26782d8c121974c3cf7d6fe89c8"
+    },
+    "audit.duplicate_rows": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "after": {
+    "documents": {
+      "rows": 1424662,
+      "sha256": "1a49718d42afb7f783bc764cc3b90890a93f4c1ff7e5bff2eb64225b3aa44f1c"
+    },
+    "persons": {
+      "rows": 1614,
+      "sha256": "9550350c710f6da19aaaeebc05fa9f7f4d95a66afe8f38fea59d22a655deebab"
+    },
+    "kg_nodes": {
+      "rows": 467,
+      "sha256": "85fd2d11f1f6ab124a71730385c06ae2b15024310f958cdc098df0e5ae7b6022"
+    },
+    "events": {
+      "rows": 3038,
+      "sha256": "afbbdd52a3e8807eb94f05007daf9067dd235ce9758e4a6d5dbf5139d2d1930b"
+    },
+    "upstream_runs": {
+      "rows": 123,
+      "sha256": "1a6500623ebc9350ed78b05d6d13803cf5694245cc3ef7d35a08946302c46d07"
+    },
+    "chunks": {
+      "rows": 2193027,
+      "sha256": "a2c2eda033fe6c07fac901914881e9a91acf12c6e0e68a648c55367fcc352cbc"
+    },
+    "mentions": {
+      "rows": 10629198,
+      "sha256": "f42eec3b97cfb108a8a8ac313e298f2fbec128a5b66426d70b534adb2b173f34"
+    },
+    "kg_edges": {
+      "rows": 2198,
+      "sha256": "1f3d92ee7d68f8c3c2d4e59f2ff4196085d6fa67041acf46f5259f2a5dcf019d"
+    },
+    "event_participants": {
+      "rows": 5751,
+      "sha256": "a32998856b4be53314d1e77cf29128229c4307fe412f6253b501a9c837cc9f3e"
+    },
+    "event_sources": {
+      "rows": 21910,
+      "sha256": "b425415c4ec9ce683cd8faf86b151fe8f2267b37dae94fe575ef7a591c8c2bf4"
+    },
+    "financial_transactions": {
+      "rows": 49770,
+      "sha256": "eee7d6663f30d80732b0a462ebf68039e7dfaab3a2d201e68c3cb2d5bcdd2b5a"
+    },
+    "curated_annotations": {
+      "rows": 5766,
+      "sha256": "8f664eaa8a98d9c292d59822e4474d87e4d2656b8d3cf5e15a1e38681d479041"
+    },
+    "upstream_files": {
+      "rows": 1387775,
+      "sha256": "4aeed0c8a364533a7d8dc72f72268d69877496a669baaf4f7abedcd93a277846"
+    },
+    "person_aliases": {
+      "rows": 241,
+      "sha256": "33aedb95d878c9843b6d9baddd026b20ec0ead67e7d86b9681291c0be93195a0"
+    },
+    "curated_document_links": {
+      "rows": 1445,
+      "sha256": "a795a4ed8c43da14e42aa130d442b7dcbda777ce02a9b9214f0f06a40c6c178c"
+    },
+    "audit.import_issues": {
+      "rows": 11492441,
+      "sha256": "fc586c5000f14b289599f9686a88a1605b28ec03a7936fdbdca77f6037a8ddb6"
+    },
+    "audit.quarantined_rows": {
+      "rows": 74,
+      "sha256": "6419916f54257c19f32f6b3092bbeaa0a12fb26782d8c121974c3cf7d6fe89c8"
+    },
+    "audit.duplicate_rows": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "format": "PostgreSQL18 to_jsonb(row) minus input_file_id/source_row/loaded_by_run, canonical jsonb text UTF8, SHA256 per row; concatenate fixed 32-byte row hashes in PK order and SHA256 again. Audit issue/quarantine/duplicate rows: all non-run fields in column order, sorted by all fields, ASCII JSON arrays with length prefixes. UTC session; audit attempts/timestamps excluded.",
+  "repo_id": "kabasshouse/epstein-data",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "content_identity": "5f2c75c1975dc8535118e0c9f0bc423f5c87f91a1d6d8d9e7db08677d954c0ed",
+  "schema_version": "z1-schema-v1",
+  "transform_version": "z1-transform-v1"
+}

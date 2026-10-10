@@ -1,0 +1,341 @@
+{
+  "verified_at": "2026-10-10T20:36:37.379118+00:00",
+  "original_claim": "Source changes leave the stored report stale until refresh.",
+  "disposition": "substantially refined",
+  "refined_claim": "The stored materialized rows are not automatically recomputed. Source changes that alter the aggregate query result make the report result stale. Changes to unused columns, or offsetting changes preserving all reported aggregates, may leave the current report result equal without a refresh.",
+  "stages": {
+    "initial": {
+      "direct": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "materialized": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "equal": true,
+      "source_observations": [
+        {
+          "source_id": 1,
+          "amount": "10.25",
+          "note": null
+        },
+        {
+          "source_id": 2,
+          "amount": "-0.25",
+          "note": null
+        }
+      ]
+    },
+    "unused_column_changed": {
+      "direct": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "materialized": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "equal": true,
+      "source_observations": [
+        {
+          "source_id": 1,
+          "amount": "10.25",
+          "note": "Unused description changed; financial aggregates are unchanged"
+        },
+        {
+          "source_id": 2,
+          "amount": "-0.25",
+          "note": null
+        }
+      ]
+    },
+    "offsetting_amount_changes": {
+      "direct": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "materialized": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "equal": true,
+      "source_observations": [
+        {
+          "source_id": 1,
+          "amount": "15.25",
+          "note": "Unused description changed; financial aggregates are unchanged"
+        },
+        {
+          "source_id": 2,
+          "amount": "-5.25",
+          "note": null
+        }
+      ]
+    },
+    "aggregate_changed": {
+      "direct": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "87f1b4deff768cf8a6e28ed45105e8afbe81c4369b044be1b48df6df3bb222a9",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "materialized": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "5eee941a18588ce7468cc12426f81911fbcde605214e7178a87b0b18c3c704d5",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "equal": false,
+      "source_observations": [
+        {
+          "source_id": 1,
+          "amount": "16.25",
+          "note": "Unused description changed; financial aggregates are unchanged"
+        },
+        {
+          "source_id": 2,
+          "amount": "-5.25",
+          "note": null
+        }
+      ]
+    },
+    "after_refresh": {
+      "direct": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "87f1b4deff768cf8a6e28ed45105e8afbe81c4369b044be1b48df6df3bb222a9",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "materialized": {
+        "rows": 4,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "87f1b4deff768cf8a6e28ed45105e8afbe81c4369b044be1b48df6df3bb222a9",
+        "totals": {
+          "transaction_records": 8,
+          "valid_amount_records": 5,
+          "missing_amount_records": 2,
+          "invalid_amount_records": 1,
+          "negative_amount_records": 1,
+          "zero_amount_records": 1,
+          "positive_amount_records": 3
+        }
+      },
+      "equal": true,
+      "source_observations": [
+        {
+          "source_id": 1,
+          "amount": "16.25",
+          "note": "Unused description changed; financial aggregates are unchanged"
+        },
+        {
+          "source_id": 2,
+          "amount": "-5.25",
+          "note": null
+        }
+      ]
+    }
+  },
+  "synthetic_schema": "z1_r2_demo_ai_29fd385e82cc",
+  "corpus_modified": false,
+  "schema_removed": true,
+  "note": "Result equality concerns Q4 aggregates, not equality of every underlying source field or snapshot age.",
+  "primary_sources": [
+    "https://www.postgresql.org/docs/18/rules-materializedviews.html",
+    "https://www.postgresql.org/docs/18/sql-refreshmaterializedview.html"
+  ]
+}

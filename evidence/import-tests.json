@@ -1,0 +1,20 @@
+{
+  "executed_at": "2026-10-10T19:24:23.992225+00:00",
+  "python": "3.13.7",
+  "tests_run": 16,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "synthetic_schemas_only": true,
+  "cases": [
+    "invalid/missing/partial dates",
+    "invalid JSON vs SQL NULL vs JSON null vs absent key",
+    "optional unresolved reference retained",
+    "database invalid FK rejection",
+    "exact monetary source precision",
+    "duplicate/conflicting identity accounting",
+    "fresh-connection before/after commit recovery",
+    "acquisition timestamps excluded from load identity"
+  ]
+}

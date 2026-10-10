@@ -1,0 +1,538 @@
+{
+  "format_version": 1,
+  "repo_id": "kabasshouse/epstein-data",
+  "repo_type": "dataset",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "acquired_at": "2026-10-10T14:58:14.758316+00:00",
+  "acquisition_note": "Time each pinned file was made available locally; cache reuse is possible.",
+  "download_tool": {
+    "name": "huggingface_hub",
+    "version": "1.31.0"
+  },
+  "files": [
+    {
+      "path": "data/documents/documents-00000-of-00015.parquet",
+      "bytes": 32160053,
+      "sha256": "f7cbb617509ee7a80fba0131258a10c28540e88af6cc89f57d85cd2b4e5c582d",
+      "acquired_at": "2026-10-10T14:53:10.981223+00:00",
+      "layer": "documents",
+      "upstream_sha256": "f7cbb617509ee7a80fba0131258a10c28540e88af6cc89f57d85cd2b4e5c582d",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00001-of-00015.parquet",
+      "bytes": 17896030,
+      "sha256": "de6b953b10b7c127441fe01f98c1932dca33c0a0cc1ae89ad43088a8a4a5c7a6",
+      "acquired_at": "2026-10-10T14:53:29.516363+00:00",
+      "layer": "documents",
+      "upstream_sha256": "de6b953b10b7c127441fe01f98c1932dca33c0a0cc1ae89ad43088a8a4a5c7a6",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00002-of-00015.parquet",
+      "bytes": 19282498,
+      "sha256": "20dcade7851269ecabfef1706bbd3c0d3b8d9b5d7c76de6127a384f096b4f1dc",
+      "acquired_at": "2026-10-10T14:53:28.923949+00:00",
+      "layer": "documents",
+      "upstream_sha256": "20dcade7851269ecabfef1706bbd3c0d3b8d9b5d7c76de6127a384f096b4f1dc",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00003-of-00015.parquet",
+      "bytes": 19455797,
+      "sha256": "40283258fd792d74b30cfac709be1580252fb0d3b755f794c3abe5e5018ef5bc",
+      "acquired_at": "2026-10-10T14:53:28.921496+00:00",
+      "layer": "documents",
+      "upstream_sha256": "40283258fd792d74b30cfac709be1580252fb0d3b755f794c3abe5e5018ef5bc",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00004-of-00015.parquet",
+      "bytes": 17039369,
+      "sha256": "aa27211d9f5730e8585fee6ec413aecf27f5fe88d343294c15568df991a76a9b",
+      "acquired_at": "2026-10-10T14:53:29.694636+00:00",
+      "layer": "documents",
+      "upstream_sha256": "aa27211d9f5730e8585fee6ec413aecf27f5fe88d343294c15568df991a76a9b",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00005-of-00015.parquet",
+      "bytes": 17440809,
+      "sha256": "335f064da47bffeacaded9fe1021b26d2481e88fb71915b01285ec883b6876a8",
+      "acquired_at": "2026-10-10T14:53:54.763033+00:00",
+      "layer": "documents",
+      "upstream_sha256": "335f064da47bffeacaded9fe1021b26d2481e88fb71915b01285ec883b6876a8",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00006-of-00015.parquet",
+      "bytes": 17857487,
+      "sha256": "7e25f3d8f31833bf103173dad70e52ca54d7945d397f5cecd23588c4c2c6a6db",
+      "acquired_at": "2026-10-10T14:53:55.484750+00:00",
+      "layer": "documents",
+      "upstream_sha256": "7e25f3d8f31833bf103173dad70e52ca54d7945d397f5cecd23588c4c2c6a6db",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00007-of-00015.parquet",
+      "bytes": 109974347,
+      "sha256": "c950c8ab37e16d698d1fe5480977d0447831dad78957a15942ce75787ce3a10b",
+      "acquired_at": "2026-10-10T14:54:25.313316+00:00",
+      "layer": "documents",
+      "upstream_sha256": "c950c8ab37e16d698d1fe5480977d0447831dad78957a15942ce75787ce3a10b",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00008-of-00015.parquet",
+      "bytes": 25698673,
+      "sha256": "882668db59453182f3dc50560da56f1acbfcfc6b2a0e5ba09cd95faa1127c363",
+      "acquired_at": "2026-10-10T14:54:12.494165+00:00",
+      "layer": "documents",
+      "upstream_sha256": "882668db59453182f3dc50560da56f1acbfcfc6b2a0e5ba09cd95faa1127c363",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00009-of-00015.parquet",
+      "bytes": 57062658,
+      "sha256": "593199750fd761c17fe590d9c4e7bea71e23bf2e8d9c43f01a0b49cee4b57d23",
+      "acquired_at": "2026-10-10T14:54:59.406458+00:00",
+      "layer": "documents",
+      "upstream_sha256": "593199750fd761c17fe590d9c4e7bea71e23bf2e8d9c43f01a0b49cee4b57d23",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00010-of-00015.parquet",
+      "bytes": 45063376,
+      "sha256": "1bcdd7b92050f8eac4e2f758b9489064df9265b6f6523f621965ae61461860f9",
+      "acquired_at": "2026-10-10T14:54:53.256172+00:00",
+      "layer": "documents",
+      "upstream_sha256": "1bcdd7b92050f8eac4e2f758b9489064df9265b6f6523f621965ae61461860f9",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00011-of-00015.parquet",
+      "bytes": 30585491,
+      "sha256": "a169499d8d62d68e80740b8e16418ca3d086c6d28314ab33e77af75b9a1f7cb9",
+      "acquired_at": "2026-10-10T14:54:26.678594+00:00",
+      "layer": "documents",
+      "upstream_sha256": "a169499d8d62d68e80740b8e16418ca3d086c6d28314ab33e77af75b9a1f7cb9",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00012-of-00015.parquet",
+      "bytes": 99331623,
+      "sha256": "c6e9112404eea9d15a08401dba574250bb51e396e63f1ae759eb66c05f66b730",
+      "acquired_at": "2026-10-10T14:55:41.440942+00:00",
+      "layer": "documents",
+      "upstream_sha256": "c6e9112404eea9d15a08401dba574250bb51e396e63f1ae759eb66c05f66b730",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00013-of-00015.parquet",
+      "bytes": 91335664,
+      "sha256": "c6cf89ef12831f9240d1b4747d8014cd4961edc0a963eced9ba7c20861c71371",
+      "acquired_at": "2026-10-10T14:55:18.839426+00:00",
+      "layer": "documents",
+      "upstream_sha256": "c6cf89ef12831f9240d1b4747d8014cd4961edc0a963eced9ba7c20861c71371",
+      "row_count": 100000
+    },
+    {
+      "path": "data/documents/documents-00014-of-00015.parquet",
+      "bytes": 34729689,
+      "sha256": "eade2f5a3e0b115bc1dc72a8c45e84e8dd2c03858b949bcf4728c479bcf3d5be",
+      "acquired_at": "2026-10-10T14:55:37.870484+00:00",
+      "layer": "documents",
+      "upstream_sha256": "eade2f5a3e0b115bc1dc72a8c45e84e8dd2c03858b949bcf4728c479bcf3d5be",
+      "row_count": 24673
+    },
+    {
+      "path": "data/chunks/chunks-00000-of-00011.parquet",
+      "bytes": 42764173,
+      "sha256": "a981d273fec089a29a4974e3a2af050202679a1866d7d697838ff4b0b3a8a652",
+      "acquired_at": "2026-10-10T14:54:59.427326+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "a981d273fec089a29a4974e3a2af050202679a1866d7d697838ff4b0b3a8a652",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00001-of-00011.parquet",
+      "bytes": 33380833,
+      "sha256": "9d297fd634712e97d74b2cb6bf044896f5c4c663c8453c06aa33a580bfd86607",
+      "acquired_at": "2026-10-10T14:55:37.364176+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "9d297fd634712e97d74b2cb6bf044896f5c4c663c8453c06aa33a580bfd86607",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00002-of-00011.parquet",
+      "bytes": 29118656,
+      "sha256": "4e40c6aca5a9aea79a1def8a6df7bf46c4db51b5c950ba8e631c8f845ee88e87",
+      "acquired_at": "2026-10-10T14:55:37.738967+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "4e40c6aca5a9aea79a1def8a6df7bf46c4db51b5c950ba8e631c8f845ee88e87",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00003-of-00011.parquet",
+      "bytes": 42233793,
+      "sha256": "be7f48ed65262b15c339ebca9aa17643f7688cca33ec117ca2146645bb4ad904",
+      "acquired_at": "2026-10-10T14:56:42.643089+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "be7f48ed65262b15c339ebca9aa17643f7688cca33ec117ca2146645bb4ad904",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00004-of-00011.parquet",
+      "bytes": 87261378,
+      "sha256": "d2df4e8a30985bfff388c710d5f1fd0f083e03dca874993c180bb47f6c13082e",
+      "acquired_at": "2026-10-10T14:56:53.311720+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "d2df4e8a30985bfff388c710d5f1fd0f083e03dca874993c180bb47f6c13082e",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00005-of-00011.parquet",
+      "bytes": 45014063,
+      "sha256": "fc38b2316707eb4a6b1352c2640345c876fbc3895aacee242caafcdc825ab543",
+      "acquired_at": "2026-10-10T14:56:35.086237+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "fc38b2316707eb4a6b1352c2640345c876fbc3895aacee242caafcdc825ab543",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00006-of-00011.parquet",
+      "bytes": 70822072,
+      "sha256": "2ca9ce7e668a7d0489caf7906828c35596dea52326e6820f5130b8193fb88d8b",
+      "acquired_at": "2026-10-10T14:56:19.499868+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "2ca9ce7e668a7d0489caf7906828c35596dea52326e6820f5130b8193fb88d8b",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00007-of-00011.parquet",
+      "bytes": 49084476,
+      "sha256": "9d93698d86e8b5651928f89230afbf2fc6f62c465cd6da99ecd0fb3f98b2ea65",
+      "acquired_at": "2026-10-10T14:56:45.542320+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "9d93698d86e8b5651928f89230afbf2fc6f62c465cd6da99ecd0fb3f98b2ea65",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00008-of-00011.parquet",
+      "bytes": 89484554,
+      "sha256": "bbad34373a91f59c77f05c055fe645ffe04e7741982c2773b6b780e1de7fb5a3",
+      "acquired_at": "2026-10-10T14:57:55.387757+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "bbad34373a91f59c77f05c055fe645ffe04e7741982c2773b6b780e1de7fb5a3",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00009-of-00011.parquet",
+      "bytes": 73717067,
+      "sha256": "06e5502ee0d7a23815b629163ab15c1c9da4ce91c46557e747a047a5c828c19c",
+      "acquired_at": "2026-10-10T14:57:30.315625+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "06e5502ee0d7a23815b629163ab15c1c9da4ce91c46557e747a047a5c828c19c",
+      "row_count": 200000
+    },
+    {
+      "path": "data/chunks/chunks-00010-of-00011.parquet",
+      "bytes": 88033223,
+      "sha256": "f649bc2bf8558e7cb069f157218e3e909471222dceebea3914038b597d7b89bd",
+      "acquired_at": "2026-10-10T14:57:23.626297+00:00",
+      "layer": "chunks",
+      "upstream_sha256": "f649bc2bf8558e7cb069f157218e3e909471222dceebea3914038b597d7b89bd",
+      "row_count": 193090
+    },
+    {
+      "path": "data/entities/entities-00000-of-00018.parquet",
+      "bytes": 3515631,
+      "sha256": "4cc44b3e15b12f6e7a4b6bd6c68637c9309a3055331dead362dc3759c1bacafb",
+      "acquired_at": "2026-10-10T14:56:53.327680+00:00",
+      "layer": "entities",
+      "upstream_sha256": "4cc44b3e15b12f6e7a4b6bd6c68637c9309a3055331dead362dc3759c1bacafb",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00001-of-00018.parquet",
+      "bytes": 2803598,
+      "sha256": "0fa6f14fa76ef9360e5630139f75ac2a872fc6af4b2fce7315b96325f51a0043",
+      "acquired_at": "2026-10-10T14:56:57.407939+00:00",
+      "layer": "entities",
+      "upstream_sha256": "0fa6f14fa76ef9360e5630139f75ac2a872fc6af4b2fce7315b96325f51a0043",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00002-of-00018.parquet",
+      "bytes": 2580511,
+      "sha256": "1adc70d76c69a4f2ffc9b84a49e70735cb9f60bd614a0c4fcba0271fc660ec82",
+      "acquired_at": "2026-10-10T14:57:01.175718+00:00",
+      "layer": "entities",
+      "upstream_sha256": "1adc70d76c69a4f2ffc9b84a49e70735cb9f60bd614a0c4fcba0271fc660ec82",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00003-of-00018.parquet",
+      "bytes": 3561675,
+      "sha256": "95d895c48b9d540f5b01f403a95f6747be3f62b93120fee3b0a86b213007722b",
+      "acquired_at": "2026-10-10T14:57:04.459221+00:00",
+      "layer": "entities",
+      "upstream_sha256": "95d895c48b9d540f5b01f403a95f6747be3f62b93120fee3b0a86b213007722b",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00004-of-00018.parquet",
+      "bytes": 3740948,
+      "sha256": "440f7b9e7768f6007752a05af5f71776dbd58cb68edb20518c98f5f774135173",
+      "acquired_at": "2026-10-10T14:57:09.875840+00:00",
+      "layer": "entities",
+      "upstream_sha256": "440f7b9e7768f6007752a05af5f71776dbd58cb68edb20518c98f5f774135173",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00005-of-00018.parquet",
+      "bytes": 3656055,
+      "sha256": "0f79e1f4d82ea222425a87595bd3d96a08ce9a5faffdfe96f7b5a337defd82f0",
+      "acquired_at": "2026-10-10T14:57:15.224918+00:00",
+      "layer": "entities",
+      "upstream_sha256": "0f79e1f4d82ea222425a87595bd3d96a08ce9a5faffdfe96f7b5a337defd82f0",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00006-of-00018.parquet",
+      "bytes": 3129036,
+      "sha256": "422ce940e7c434194eedccab0ef76f4f06b24b84b04d2d22afdc20e88be50381",
+      "acquired_at": "2026-10-10T14:57:18.015943+00:00",
+      "layer": "entities",
+      "upstream_sha256": "422ce940e7c434194eedccab0ef76f4f06b24b84b04d2d22afdc20e88be50381",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00007-of-00018.parquet",
+      "bytes": 3306709,
+      "sha256": "4390929d72281f84215caf05ea5a0e71efb99f3053a54988b0910abab9970c34",
+      "acquired_at": "2026-10-10T14:57:24.615764+00:00",
+      "layer": "entities",
+      "upstream_sha256": "4390929d72281f84215caf05ea5a0e71efb99f3053a54988b0910abab9970c34",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00008-of-00018.parquet",
+      "bytes": 3902170,
+      "sha256": "7c3878163294c2e4a257b79ecf54023dcd706eba36e3909d40f55196d37a921d",
+      "acquired_at": "2026-10-10T14:57:27.605722+00:00",
+      "layer": "entities",
+      "upstream_sha256": "7c3878163294c2e4a257b79ecf54023dcd706eba36e3909d40f55196d37a921d",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00009-of-00018.parquet",
+      "bytes": 3543954,
+      "sha256": "09d2755b61fb6e81896fca7146abf615bc17f898f79bdcd39603b6e1c75e9065",
+      "acquired_at": "2026-10-10T14:57:29.314603+00:00",
+      "layer": "entities",
+      "upstream_sha256": "09d2755b61fb6e81896fca7146abf615bc17f898f79bdcd39603b6e1c75e9065",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00010-of-00018.parquet",
+      "bytes": 3647490,
+      "sha256": "f514108fb1502e1617ef3ec57f7dbe1131d5ad9078909fe69b1c1aab8bb43be6",
+      "acquired_at": "2026-10-10T14:57:31.387085+00:00",
+      "layer": "entities",
+      "upstream_sha256": "f514108fb1502e1617ef3ec57f7dbe1131d5ad9078909fe69b1c1aab8bb43be6",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00011-of-00018.parquet",
+      "bytes": 3011662,
+      "sha256": "99405bfe418f450af67e2d2271c8c702d62c68e93e093d351f466f8911027461",
+      "acquired_at": "2026-10-10T14:57:32.101097+00:00",
+      "layer": "entities",
+      "upstream_sha256": "99405bfe418f450af67e2d2271c8c702d62c68e93e093d351f466f8911027461",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00012-of-00018.parquet",
+      "bytes": 3238377,
+      "sha256": "57090e55b138f132b60e014575a6a2699d516945c7086234b1276b7da13c5afd",
+      "acquired_at": "2026-10-10T14:57:33.730926+00:00",
+      "layer": "entities",
+      "upstream_sha256": "57090e55b138f132b60e014575a6a2699d516945c7086234b1276b7da13c5afd",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00013-of-00018.parquet",
+      "bytes": 3952030,
+      "sha256": "f3e693ffb88949a30f1961846c4ce85056424453150c5c1a8797a8a9559ac031",
+      "acquired_at": "2026-10-10T14:57:35.394449+00:00",
+      "layer": "entities",
+      "upstream_sha256": "f3e693ffb88949a30f1961846c4ce85056424453150c5c1a8797a8a9559ac031",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00014-of-00018.parquet",
+      "bytes": 3309995,
+      "sha256": "1a7718cf2ca5b2e1a720d9651210e76b525c601b1d30d307eb0a5b07992cb3c3",
+      "acquired_at": "2026-10-10T14:57:37.961914+00:00",
+      "layer": "entities",
+      "upstream_sha256": "1a7718cf2ca5b2e1a720d9651210e76b525c601b1d30d307eb0a5b07992cb3c3",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00015-of-00018.parquet",
+      "bytes": 3802803,
+      "sha256": "241f9282a38f00e14c1a5adb65e3883df0402c901c38bb5cc74c08dacbd5dafb",
+      "acquired_at": "2026-10-10T14:57:37.083709+00:00",
+      "layer": "entities",
+      "upstream_sha256": "241f9282a38f00e14c1a5adb65e3883df0402c901c38bb5cc74c08dacbd5dafb",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00016-of-00018.parquet",
+      "bytes": 3805499,
+      "sha256": "beb657f04874a25d7f965c7e198dd5865bbbf1258946ddf5e9a9ce268ca6b34c",
+      "acquired_at": "2026-10-10T14:57:39.446746+00:00",
+      "layer": "entities",
+      "upstream_sha256": "beb657f04874a25d7f965c7e198dd5865bbbf1258946ddf5e9a9ce268ca6b34c",
+      "row_count": 600000
+    },
+    {
+      "path": "data/entities/entities-00017-of-00018.parquet",
+      "bytes": 3058101,
+      "sha256": "9e5cf984cab03d6572197a9fb5ea2c08785a5281820cbdef15f9b9600716dc32",
+      "acquired_at": "2026-10-10T14:57:46.588473+00:00",
+      "layer": "entities",
+      "upstream_sha256": "9e5cf984cab03d6572197a9fb5ea2c08785a5281820cbdef15f9b9600716dc32",
+      "row_count": 429198
+    },
+    {
+      "path": "data/persons/persons-00000-of-00001.parquet",
+      "bytes": 65538,
+      "sha256": "162fbe2eac00f294fc7043ca8f0a7654e8ef65e4f6ebeff39a5b9142391fd992",
+      "acquired_at": "2026-10-10T14:57:37.978886+00:00",
+      "layer": "persons",
+      "upstream_sha256": "162fbe2eac00f294fc7043ca8f0a7654e8ef65e4f6ebeff39a5b9142391fd992",
+      "row_count": 1614
+    },
+    {
+      "path": "data/kg_entities/kg_entities-00000-of-00001.parquet",
+      "bytes": 11549,
+      "sha256": "c40b9e8747c16e050be2927dedef331619ddb17fc18c40e1d81bc132c1c67b1f",
+      "acquired_at": "2026-10-10T14:57:37.995721+00:00",
+      "layer": "kg_entities",
+      "upstream_sha256": "c40b9e8747c16e050be2927dedef331619ddb17fc18c40e1d81bc132c1c67b1f",
+      "row_count": 467
+    },
+    {
+      "path": "data/kg_relationships/kg_relationships-00000-of-00001.parquet",
+      "bytes": 31375,
+      "sha256": "ef45c3cb3f5011e29be1ce951a207b185b0dd671b52bd98154935fe99a7c3f94",
+      "acquired_at": "2026-10-10T14:57:38.013631+00:00",
+      "layer": "kg_relationships",
+      "upstream_sha256": "ef45c3cb3f5011e29be1ce951a207b185b0dd671b52bd98154935fe99a7c3f94",
+      "row_count": 2198
+    },
+    {
+      "path": "data/derived_events/derived_events-00000-of-00001.parquet",
+      "bytes": 291804,
+      "sha256": "3e67707faf0c02e3ad8606a89ace4959fecfa060e27f0244e885ee537a2e44ca",
+      "acquired_at": "2026-10-10T14:57:38.021394+00:00",
+      "layer": "derived_events",
+      "upstream_sha256": "3e67707faf0c02e3ad8606a89ace4959fecfa060e27f0244e885ee537a2e44ca",
+      "row_count": 3038
+    },
+    {
+      "path": "data/event_participants/event_participants-00000-of-00001.parquet",
+      "bytes": 47358,
+      "sha256": "052b258e8d92969e5fce70dc4a9d35aef4cfe5991cdc40bf0ac0958a402e3e80",
+      "acquired_at": "2026-10-10T14:57:38.035816+00:00",
+      "layer": "event_participants",
+      "upstream_sha256": "052b258e8d92969e5fce70dc4a9d35aef4cfe5991cdc40bf0ac0958a402e3e80",
+      "row_count": 5751
+    },
+    {
+      "path": "data/event_sources/event_sources-00000-of-00001.parquet",
+      "bytes": 78696,
+      "sha256": "c572ec840be186fa65ad02274469df77bc8badc640df45603d105448262381f1",
+      "acquired_at": "2026-10-10T14:57:38.047404+00:00",
+      "layer": "event_sources",
+      "upstream_sha256": "c572ec840be186fa65ad02274469df77bc8badc640df45603d105448262381f1",
+      "row_count": 21910
+    },
+    {
+      "path": "data/financial_transactions/financial_transactions-00000-of-00001.parquet",
+      "bytes": 1224697,
+      "sha256": "14b31d9eeff7ac5381636f07b076b6424b6abd2388c8cc4712636e071b5700e8",
+      "acquired_at": "2026-10-10T14:57:38.063804+00:00",
+      "layer": "financial_transactions",
+      "upstream_sha256": "14b31d9eeff7ac5381636f07b076b6424b6abd2388c8cc4712636e071b5700e8",
+      "row_count": 49770
+    },
+    {
+      "path": "data/curated_docs/curated_docs-00000-of-00001.parquet",
+      "bytes": 1629169,
+      "sha256": "92dfd415fafda8467d6d1ca15834c4c451aec61f6e9e5453033ac06adaf110a1",
+      "acquired_at": "2026-10-10T14:57:38.077655+00:00",
+      "layer": "curated_docs",
+      "upstream_sha256": "92dfd415fafda8467d6d1ca15834c4c451aec61f6e9e5453033ac06adaf110a1",
+      "row_count": 5766
+    },
+    {
+      "path": "data/provenance/runs/runs-00000-of-00001.parquet",
+      "bytes": 15785,
+      "sha256": "d353ebf96db2ab5f29305a44468246ac88f91c3de52321ee67fbf31ceaa5df9c",
+      "acquired_at": "2026-10-10T14:57:38.093501+00:00",
+      "layer": "provenance/runs",
+      "upstream_sha256": "d353ebf96db2ab5f29305a44468246ac88f91c3de52321ee67fbf31ceaa5df9c",
+      "row_count": 123
+    },
+    {
+      "path": "data/provenance/files/files-00000-of-00003.parquet",
+      "bytes": 21676470,
+      "sha256": "16d1a08e540ba3f2ad00195bc3c7c6052b21a55d2e7c08fa2f23ec05d59d9a23",
+      "acquired_at": "2026-10-10T14:57:38.103413+00:00",
+      "layer": "provenance/files",
+      "upstream_sha256": "16d1a08e540ba3f2ad00195bc3c7c6052b21a55d2e7c08fa2f23ec05d59d9a23",
+      "row_count": 500000
+    },
+    {
+      "path": "data/provenance/files/files-00001-of-00003.parquet",
+      "bytes": 44427003,
+      "sha256": "906f881a5f18a8c9c7f3d8e3ef523b32f0a2cb71e3dc9d46feca05f09f2245dc",
+      "acquired_at": "2026-10-10T14:58:07.793901+00:00",
+      "layer": "provenance/files",
+      "upstream_sha256": "906f881a5f18a8c9c7f3d8e3ef523b32f0a2cb71e3dc9d46feca05f09f2245dc",
+      "row_count": 500000
+    },
+    {
+      "path": "data/provenance/files/files-00002-of-00003.parquet",
+      "bytes": 36476449,
+      "sha256": "982934ff734e5e80aba3491791a87090c5731bb7465b453bbf801da8db35479c",
+      "acquired_at": "2026-10-10T14:58:13.130044+00:00",
+      "layer": "provenance/files",
+      "upstream_sha256": "982934ff734e5e80aba3491791a87090c5731bb7465b453bbf801da8db35479c",
+      "row_count": 387775
+    }
+  ],
+  "documentation": [
+    {
+      "path": "README.md",
+      "bytes": 7076,
+      "sha256": "5ff9181ac59d54d13af418d595db92e4eed2c555bda6fb019406860899253ae9",
+      "acquired_at": "2026-10-10T14:57:46.601398+00:00"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1418,
+      "sha256": "2aedecb023e418b891f37e0546cc1f1821cc1033976f103059ffb2ce7f1b588c",
+      "acquired_at": "2026-10-10T14:57:46.617369+00:00"
+    },
+    {
+      "path": "PROVENANCE.md",
+      "bytes": 6330,
+      "sha256": "df60b367556d4b1da86142f73eede9a220de443f55ddc416b5a8405a2a93ec24",
+      "acquired_at": "2026-10-10T14:57:46.630832+00:00"
+    }
+  ]
+}

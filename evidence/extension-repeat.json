@@ -1,0 +1,130 @@
+{
+  "verified_at": "2026-10-10T20:23:44.800449+00:00",
+  "checks": {
+    "same_materialized_view_oid": true,
+    "same_complete_result": true,
+    "reused_existing_report": true,
+    "financial_source_unchanged": true,
+    "other_indexes_and_constraints_unchanged": true,
+    "all_four_workload_indexes_active": true
+  },
+  "before": {
+    "oid": 1183201,
+    "comparison": {
+      "direct": {
+        "rows": 18392,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+        "totals": {
+          "transaction_records": 49770,
+          "valid_amount_records": 49219,
+          "missing_amount_records": 551,
+          "invalid_amount_records": 0,
+          "negative_amount_records": 18237,
+          "zero_amount_records": 532,
+          "positive_amount_records": 30450
+        }
+      },
+      "materialized": {
+        "rows": 18392,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+        "totals": {
+          "transaction_records": 49770,
+          "valid_amount_records": 49219,
+          "missing_amount_records": 551,
+          "invalid_amount_records": 0,
+          "negative_amount_records": 18237,
+          "zero_amount_records": 532,
+          "positive_amount_records": 30450
+        }
+      },
+      "equal": true
+    },
+    "created": true
+  },
+  "after": {
+    "oid": 1183201,
+    "comparison": {
+      "direct": {
+        "rows": 18392,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+        "totals": {
+          "transaction_records": 49770,
+          "valid_amount_records": 49219,
+          "missing_amount_records": 551,
+          "invalid_amount_records": 0,
+          "negative_amount_records": 18237,
+          "zero_amount_records": 532,
+          "positive_amount_records": 30450
+        }
+      },
+      "materialized": {
+        "rows": 18392,
+        "columns": [
+          "currency",
+          "merchant_search_value",
+          "transaction_records",
+          "valid_amount_records",
+          "missing_amount_records",
+          "invalid_amount_records",
+          "negative_amount_records",
+          "zero_amount_records",
+          "positive_amount_records",
+          "amount_sum"
+        ],
+        "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+        "totals": {
+          "transaction_records": 49770,
+          "valid_amount_records": 49219,
+          "missing_amount_records": 551,
+          "invalid_amount_records": 0,
+          "negative_amount_records": 18237,
+          "zero_amount_records": 532,
+          "positive_amount_records": 30450
+        }
+      },
+      "equal": true
+    },
+    "created": false
+  },
+  "financial_source_sha256": "ffd5076774874de79cefd1b792cb7df5aaf656d15e47d815ff30f718ab6602a8",
+  "catalog_sha256": "15d19a2366c9352fe96f2622bbd39ddbb57573ec461308d6210ea930d54e423d",
+  "constraints": 452,
+  "foreign_keys": 50,
+  "other_indexes": 41
+}

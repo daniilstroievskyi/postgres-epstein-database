@@ -1,0 +1,635 @@
+{
+  "validated_at": "2026-10-10T19:11:29.951712+00:00",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "run_id": "9ee8267b-bae0-4ed2-9c86-480a68e7ee31",
+  "layers": {
+    "chunks": {
+      "read": 2193090,
+      "accepted": 2193027,
+      "quarantined": 63,
+      "duplicate": 0,
+      "target_rows": 2193027
+    },
+    "curated_docs": {
+      "read": 5766,
+      "accepted": 5766,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 5766
+    },
+    "derived_events": {
+      "read": 3038,
+      "accepted": 3038,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 3038
+    },
+    "documents": {
+      "read": 1424673,
+      "accepted": 1424662,
+      "quarantined": 11,
+      "duplicate": 0,
+      "target_rows": 1424662
+    },
+    "entities": {
+      "read": 10629198,
+      "accepted": 10629198,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 10629198
+    },
+    "event_participants": {
+      "read": 5751,
+      "accepted": 5751,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 5751
+    },
+    "event_sources": {
+      "read": 21910,
+      "accepted": 21910,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 21910
+    },
+    "financial_transactions": {
+      "read": 49770,
+      "accepted": 49770,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 49770
+    },
+    "kg_entities": {
+      "read": 467,
+      "accepted": 467,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 467
+    },
+    "kg_relationships": {
+      "read": 2198,
+      "accepted": 2198,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 2198
+    },
+    "persons": {
+      "read": 1614,
+      "accepted": 1614,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 1614
+    },
+    "provenance/files": {
+      "read": 1387775,
+      "accepted": 1387775,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 1387775
+    },
+    "provenance/runs": {
+      "read": 123,
+      "accepted": 123,
+      "quarantined": 0,
+      "duplicate": 0,
+      "target_rows": 123
+    }
+  },
+  "files": [
+    {
+      "path": "data/chunks/chunks-00000-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00001-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00002-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00003-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00004-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00005-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00006-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00007-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00008-of-00011.parquet",
+      "read": 200000,
+      "accepted": 200000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00009-of-00011.parquet",
+      "read": 200000,
+      "accepted": 199985,
+      "quarantined": 15,
+      "duplicate": 0
+    },
+    {
+      "path": "data/chunks/chunks-00010-of-00011.parquet",
+      "read": 193090,
+      "accepted": 193042,
+      "quarantined": 48,
+      "duplicate": 0
+    },
+    {
+      "path": "data/curated_docs/curated_docs-00000-of-00001.parquet",
+      "read": 5766,
+      "accepted": 5766,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/derived_events/derived_events-00000-of-00001.parquet",
+      "read": 3038,
+      "accepted": 3038,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00000-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00001-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00002-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00003-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00004-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00005-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00006-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00007-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00008-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00009-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00010-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00011-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00012-of-00015.parquet",
+      "read": 100000,
+      "accepted": 100000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00013-of-00015.parquet",
+      "read": 100000,
+      "accepted": 99991,
+      "quarantined": 9,
+      "duplicate": 0
+    },
+    {
+      "path": "data/documents/documents-00014-of-00015.parquet",
+      "read": 24673,
+      "accepted": 24671,
+      "quarantined": 2,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00000-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00001-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00002-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00003-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00004-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00005-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00006-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00007-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00008-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00009-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00010-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00011-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00012-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00013-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00014-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00015-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00016-of-00018.parquet",
+      "read": 600000,
+      "accepted": 600000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/entities/entities-00017-of-00018.parquet",
+      "read": 429198,
+      "accepted": 429198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/event_participants/event_participants-00000-of-00001.parquet",
+      "read": 5751,
+      "accepted": 5751,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/event_sources/event_sources-00000-of-00001.parquet",
+      "read": 21910,
+      "accepted": 21910,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/financial_transactions/financial_transactions-00000-of-00001.parquet",
+      "read": 49770,
+      "accepted": 49770,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/kg_entities/kg_entities-00000-of-00001.parquet",
+      "read": 467,
+      "accepted": 467,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/kg_relationships/kg_relationships-00000-of-00001.parquet",
+      "read": 2198,
+      "accepted": 2198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/persons/persons-00000-of-00001.parquet",
+      "read": 1614,
+      "accepted": 1614,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/provenance/files/files-00000-of-00003.parquet",
+      "read": 500000,
+      "accepted": 500000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/provenance/files/files-00001-of-00003.parquet",
+      "read": 500000,
+      "accepted": 500000,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/provenance/files/files-00002-of-00003.parquet",
+      "read": 387775,
+      "accepted": 387775,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    {
+      "path": "data/provenance/runs/runs-00000-of-00001.parquet",
+      "read": 123,
+      "accepted": 123,
+      "quarantined": 0,
+      "duplicate": 0
+    }
+  ],
+  "constraints": {
+    "total": 452,
+    "foreign_keys": 50,
+    "all_active_validated": true,
+    "nonnull_fk_antijoins": "passed",
+    "required_relationships": "passed"
+  },
+  "derived": {
+    "person_aliases": {
+      "expected": 241,
+      "actual": 241
+    },
+    "curated_document_links": {
+      "expected": 1445,
+      "actual": 1445
+    }
+  },
+  "issues": [
+    {
+      "layer": "chunks",
+      "field": "offsets",
+      "code": "actual_length_exceeded",
+      "count": 81
+    },
+    {
+      "layer": "chunks",
+      "field": "offsets",
+      "code": "reported_length_disagreement",
+      "count": 14832
+    },
+    {
+      "layer": "curated_docs",
+      "field": "also_appears_as",
+      "code": "alternate_document_unmatched",
+      "count": 99
+    },
+    {
+      "layer": "curated_docs",
+      "field": "doc_date",
+      "code": "date_invalid",
+      "count": 10
+    },
+    {
+      "layer": "curated_docs",
+      "field": "doc_date",
+      "code": "date_unparsed",
+      "count": 1159
+    },
+    {
+      "layer": "documents",
+      "field": "date",
+      "code": "date_invalid",
+      "count": 2
+    },
+    {
+      "layer": "documents",
+      "field": "date",
+      "code": "date_unparsed",
+      "count": 766231
+    },
+    {
+      "layer": "documents",
+      "field": "email_fields",
+      "code": "json_unexpected_shape",
+      "count": 4
+    },
+    {
+      "layer": "entities",
+      "field": "document_reference",
+      "code": "namespace_unverified",
+      "count": 10628725
+    },
+    {
+      "layer": "entities",
+      "field": "document_reference",
+      "code": "unmatched",
+      "count": 473
+    },
+    {
+      "layer": "event_sources",
+      "field": "document_reference",
+      "code": "unmatched",
+      "count": 16651
+    },
+    {
+      "layer": "financial_transactions",
+      "field": "dataset",
+      "code": "document_dataset_disagreement",
+      "count": 482
+    },
+    {
+      "layer": "provenance/files",
+      "field": "document_reference",
+      "code": "unmatched",
+      "count": 16
+    },
+    {
+      "layer": "provenance/files",
+      "field": "run_reference",
+      "code": "missing",
+      "count": 63676
+    }
+  ],
+  "checks": {
+    "manifest": "passed",
+    "physical_source_coverage": "passed",
+    "row_accounting": "passed",
+    "disjoint_dispositions": "passed",
+    "mapping_columns": "passed",
+    "target_counts": "passed",
+    "derived_counts_and_values": "passed",
+    "resolved_reference_values": "passed",
+    "entity_namespace_policy": "passed",
+    "all_original_field_fingerprints": "passed",
+    "exact_amount_transformation": "passed"
+  },
+  "attempt_activity": {
+    "read": 0,
+    "accepted": 0,
+    "quarantined": 0,
+    "duplicate": 0,
+    "previously_processed": 15725373
+  },
+  "quarantine_reasons": [
+    {
+      "layer": "chunks",
+      "field": "content",
+      "reason": "text_nul",
+      "count": 15
+    },
+    {
+      "layer": "chunks",
+      "field": "identity_or_reference",
+      "reason": "required_document_absent",
+      "count": 48
+    },
+    {
+      "layer": "documents",
+      "field": "full_text",
+      "reason": "text_nul",
+      "count": 11
+    }
+  ]
+}

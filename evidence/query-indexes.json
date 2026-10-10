@@ -1,0 +1,129 @@
+{
+  "recorded_at": "2026-10-10T19:55:12.418763+00:00",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "content_identity": "5f2c75c1975dc8535118e0c9f0bc423f5c87f91a1d6d8d9e7db08677d954c0ed",
+  "ddl_file_sha256": "7e657c5b6ee558ebc7a9b5c553bbfcc2b0f5d2031d0b386f44ffcd92557a4b72",
+  "environment": {
+    "python": "3.13.7",
+    "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "extensions": {
+      "pg_trgm": "1.6",
+      "plpgsql": "1.0"
+    },
+    "database_locale": [
+      "en_US.utf8",
+      "en_US.utf8"
+    ],
+    "settings": {
+      "maintenance_work_mem": {
+        "value": "65536",
+        "unit": "kB"
+      },
+      "max_parallel_workers_per_gather": {
+        "value": "2",
+        "unit": null
+      },
+      "shared_buffers": {
+        "value": "16384",
+        "unit": "8kB"
+      },
+      "work_mem": {
+        "value": "4096",
+        "unit": "kB"
+      }
+    }
+  },
+  "indexes": {
+    "chunks_fts_gin": {
+      "table": "chunks",
+      "method": "gin",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX chunks_fts_gin ON z1.chunks USING gin (to_tsvector('english'::regconfig, COALESCE(content, ''::text)))",
+      "bytes": 1287847936,
+      "expression": "to_tsvector('english'::regconfig, COALESCE(content, ''::text))",
+      "predicate": null,
+      "keys": [
+        null
+      ],
+      "opclasses": [
+        "tsvector_ops"
+      ],
+      "created_this_invocation": false,
+      "build_seconds": 290.9207033000421,
+      "build_measured_at": "2026-10-10T19:51:26.617188+00:00",
+      "target_rows": 2193027,
+      "indexed_rows": 2193027
+    },
+    "persons_name_trgm_gin": {
+      "table": "persons",
+      "method": "gin",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX persons_name_trgm_gin ON z1.persons USING gin (search_value gin_trgm_ops)",
+      "bytes": 278528,
+      "expression": null,
+      "predicate": null,
+      "keys": [
+        "search_value"
+      ],
+      "opclasses": [
+        "gin_trgm_ops"
+      ],
+      "created_this_invocation": false,
+      "build_seconds": 0.02695950004272163,
+      "build_measured_at": "2026-10-10T19:51:27.072158+00:00",
+      "target_rows": 1614,
+      "indexed_rows": 1614
+    },
+    "financial_currency_merchant_btree": {
+      "table": "financial_transactions",
+      "method": "btree",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX financial_currency_merchant_btree ON z1.financial_transactions USING btree (currency, search_value)",
+      "bytes": 1990656,
+      "expression": null,
+      "predicate": null,
+      "keys": [
+        "currency",
+        "search_value"
+      ],
+      "opclasses": [
+        "text_ops",
+        "text_ops"
+      ],
+      "created_this_invocation": false,
+      "build_seconds": 0.1632333000889048,
+      "build_measured_at": "2026-10-10T19:51:27.247023+00:00",
+      "target_rows": 49770,
+      "indexed_rows": 49770
+    },
+    "documents_email_object_gin": {
+      "table": "documents",
+      "method": "gin",
+      "valid": true,
+      "ready": true,
+      "unique": false,
+      "ddl": "CREATE INDEX documents_email_object_gin ON z1.documents USING gin (email_fields jsonb_path_ops) WHERE ((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "bytes": 81920,
+      "expression": null,
+      "predicate": "((email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+      "keys": [
+        "email_fields"
+      ],
+      "opclasses": [
+        "jsonb_path_ops"
+      ],
+      "created_this_invocation": false,
+      "build_seconds": 13.513278299942613,
+      "build_measured_at": "2026-10-10T19:51:40.772667+00:00",
+      "target_rows": 1424662,
+      "indexed_rows": 631
+    }
+  },
+  "complete": true
+}

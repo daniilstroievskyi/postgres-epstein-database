@@ -1,0 +1,111 @@
+{
+  "verified_at": "2026-10-10T20:23:44.690186+00:00",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "repo_id": "kabasshouse/epstein-data",
+  "content_identity": "5f2c75c1975dc8535118e0c9f0bc423f5c87f91a1d6d8d9e7db08677d954c0ed",
+  "environment": {
+    "python": "3.13.7",
+    "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "extensions": {
+      "pg_trgm": "1.6",
+      "plpgsql": "1.0"
+    },
+    "database_locale": [
+      "en_US.utf8",
+      "en_US.utf8"
+    ],
+    "settings": {
+      "maintenance_work_mem": {
+        "value": "65536",
+        "unit": "kB"
+      },
+      "max_parallel_workers_per_gather": {
+        "value": "2",
+        "unit": null
+      },
+      "shared_buffers": {
+        "value": "16384",
+        "unit": "8kB"
+      },
+      "work_mem": {
+        "value": "4096",
+        "unit": "kB"
+      }
+    }
+  },
+  "source_accounting": {
+    "read": 49770,
+    "accepted": 49770,
+    "quarantined": 0,
+    "duplicate": 0
+  },
+  "sql_file_sha256": "36380d4dc0a8b5d2ba0214b3635e4d30ad93993420345869f8fb47eb9077e5ee",
+  "created_this_invocation": false,
+  "refresh_seconds": 0.09700319997500628,
+  "definition": "CREATE MATERIALIZED VIEW \"z1\".financial_report AS\nSELECT t.currency, t.search_value AS merchant_search_value,\n       count(*) AS transaction_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid') AS valid_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'missing') AS missing_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'invalid') AS invalid_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount < 0) AS negative_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount = 0) AS zero_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount > 0) AS positive_amount_records,\n       sum(t.amount) FILTER (WHERE t.amount_state = 'valid' AND t.currency IS NOT NULL) AS amount_sum\nFROM \"z1\".financial_transactions t\nGROUP BY t.currency, t.search_value\nWITH NO DATA;",
+  "refresh_sql": "REFRESH MATERIALIZED VIEW \"z1\".financial_report;",
+  "direct_sql": "-- Group by currency AND normalized merchant label, not verified merchant identity.\n-- Unset filters include all rows, including unknown currency/merchant buckets.\n-- SUM returns NULL if no valid amount/known currency exists; unknown amounts never become zero.\nWITH parameters AS (\n    SELECT NULLIF(current_setting('z1.currency', true), '') AS currency,\n           NULLIF(current_setting('z1.merchant', true), '') AS merchant\n)\nSELECT t.currency, t.search_value AS merchant_search_value,\n       count(*) AS transaction_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid') AS valid_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'missing') AS missing_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'invalid') AS invalid_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount < 0) AS negative_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount = 0) AS zero_amount_records,\n       count(*) FILTER (WHERE t.amount_state = 'valid' AND t.amount > 0) AS positive_amount_records,\n       sum(t.amount) FILTER (WHERE t.amount_state = 'valid' AND t.currency IS NOT NULL) AS amount_sum\nFROM \"z1\".financial_transactions t CROSS JOIN parameters p\nWHERE (p.currency IS NULL OR t.currency = p.currency)\n  AND (p.merchant IS NULL OR t.search_value = p.merchant)\nGROUP BY t.currency, t.search_value\nORDER BY t.currency NULLS FIRST, t.search_value NULLS FIRST;",
+  "read_sql": "-- Materialized storage has no guaranteed ordering; sort on each read.\nSELECT currency, merchant_search_value, transaction_records,\n       valid_amount_records, missing_amount_records, invalid_amount_records,\n       negative_amount_records, zero_amount_records, positive_amount_records, amount_sum\nFROM \"z1\".financial_report\nORDER BY currency NULLS FIRST, merchant_search_value NULLS FIRST;",
+  "comparison": {
+    "direct": {
+      "rows": 18392,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+      "totals": {
+        "transaction_records": 49770,
+        "valid_amount_records": 49219,
+        "missing_amount_records": 551,
+        "invalid_amount_records": 0,
+        "negative_amount_records": 18237,
+        "zero_amount_records": 532,
+        "positive_amount_records": 30450
+      }
+    },
+    "materialized": {
+      "rows": 18392,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+      "totals": {
+        "transaction_records": 49770,
+        "valid_amount_records": 49219,
+        "missing_amount_records": 551,
+        "invalid_amount_records": 0,
+        "negative_amount_records": 18237,
+        "zero_amount_records": 532,
+        "positive_amount_records": 30450
+      }
+    },
+    "equal": true
+  },
+  "materialized_view": {
+    "oid": 1183201,
+    "kind": "m",
+    "populated": true,
+    "definition": " SELECT currency,\n    search_value AS merchant_search_value,\n    count(*) AS transaction_records,\n    count(*) FILTER (WHERE amount_state = 'valid'::text) AS valid_amount_records,\n    count(*) FILTER (WHERE amount_state = 'missing'::text) AS missing_amount_records,\n    count(*) FILTER (WHERE amount_state = 'invalid'::text) AS invalid_amount_records,\n    count(*) FILTER (WHERE amount_state = 'valid'::text AND amount < 0::numeric) AS negative_amount_records,\n    count(*) FILTER (WHERE amount_state = 'valid'::text AND amount = 0::numeric) AS zero_amount_records,\n    count(*) FILTER (WHERE amount_state = 'valid'::text AND amount > 0::numeric) AS positive_amount_records,\n    sum(amount) FILTER (WHERE amount_state = 'valid'::text AND currency IS NOT NULL) AS amount_sum\n   FROM z1.financial_transactions t\n  GROUP BY currency, search_value;",
+    "bytes": 3686400
+  },
+  "hash_format": "Section-7 SHA256: length-prefixed compact UTF-8 JSON columns and every ordered typed row; no LIMIT or deduplication",
+  "refresh_policy": "Explicit full refresh after full validated import; same snapshot as Q4 verification; no automatic/incremental refresh"
+}

@@ -1,0 +1,738 @@
+{
+  "executed_at": "2026-10-10T19:55:45.544955+00:00",
+  "revision": "133ef9f0a539fafc270cde8fa8638dc38d89968d",
+  "environment": {
+    "python": "3.13.7",
+    "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "extensions": {
+      "pg_trgm": "1.6",
+      "plpgsql": "1.0"
+    },
+    "database_locale": [
+      "en_US.utf8",
+      "en_US.utf8"
+    ],
+    "settings": {
+      "maintenance_work_mem": {
+        "value": "65536",
+        "unit": "kB"
+      },
+      "max_parallel_workers_per_gather": {
+        "value": "2",
+        "unit": null
+      },
+      "shared_buffers": {
+        "value": "16384",
+        "unit": "8kB"
+      },
+      "work_mem": {
+        "value": "4096",
+        "unit": "kB"
+      }
+    }
+  },
+  "parameters": {
+    "fts": "aircraft",
+    "name": "Jeffrey Epstien",
+    "threshold": 0.3,
+    "kg_start": 1,
+    "currency": null,
+    "merchant": null
+  },
+  "queries_file_sha256": "cc2b4f36af2ccd4e176be12ea52c6d966c29816e17b4ef9910f4dabbd4634d4e",
+  "hash_format": "SHA256: 8-byte big-endian byte length + UTF-8 compact JSON columns, then each ordered typed row; no LIMIT; float64 IEEE hex and Decimal text",
+  "queries": {
+    "Q1": {
+      "rows": 29166,
+      "columns": [
+        "chunk_source_id",
+        "document_source_id",
+        "chunk_index",
+        "relevance"
+      ],
+      "sha256": "ed42ece1d3dc0d4ea8aec83369e572ec59ead270f3d15bc1a78c64d81281e250",
+      "sql_sha256": "7698838b95538cd0274231b46292c70eb7194a7450cde7728e94a3f835aa953f",
+      "verification_seconds": 9.236088000005111,
+      "totals": {},
+      "plan": {
+        "Node Type": "Gather Merge",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 42786.06,
+        "Total Cost": 44069.06,
+        "Plan Rows": 11016,
+        "Plan Width": 24,
+        "Disabled": false,
+        "Workers Planned": 2,
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 41786.04,
+            "Total Cost": 41797.51,
+            "Plan Rows": 4590,
+            "Plan Width": 24,
+            "Disabled": false,
+            "Sort Key": [
+              "(ts_rank_cd(to_tsvector('english'::regconfig, COALESCE(c.content, ''::text)), websearch_to_tsquery('english'::regconfig, COALESCE(current_setting('z1.fts_input'::text, true), 'aircraft'::text)))) DESC",
+              "c.source_id"
+            ],
+            "Plans": [
+              {
+                "Node Type": "Bitmap Heap Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": true,
+                "Async Capable": false,
+                "Relation Name": "chunks",
+                "Alias": "c",
+                "Startup Cost": 104.47,
+                "Total Cost": 41506.87,
+                "Plan Rows": 4590,
+                "Plan Width": 24,
+                "Disabled": false,
+                "Recheck Cond": "(to_tsvector('english'::regconfig, COALESCE(content, ''::text)) @@ websearch_to_tsquery('english'::regconfig, COALESCE(current_setting('z1.fts_input'::text, true), 'aircraft'::text)))",
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "chunks_fts_gin",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 101.71,
+                    "Plan Rows": 11017,
+                    "Plan Width": 0,
+                    "Disabled": false,
+                    "Index Cond": "(to_tsvector('english'::regconfig, COALESCE(content, ''::text)) @@ websearch_to_tsquery('english'::regconfig, COALESCE(current_setting('z1.fts_input'::text, true), 'aircraft'::text)))"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q2": {
+      "rows": 8,
+      "columns": [
+        "person_source_id",
+        "canonical_name",
+        "search_value",
+        "raw_input",
+        "normalized_input",
+        "threshold",
+        "method",
+        "normalization_version",
+        "similarity_score"
+      ],
+      "sha256": "ebd293ad84ca59263abf56ecbd4d1e3aac3b75c3104462f38f37f0b4fd16e0e6",
+      "sql_sha256": "cfba797671e3642f648012f4f3dbf710289460a5ed34059e9f8b0ddd1309b77a",
+      "verification_seconds": 0.006471899920143187,
+      "totals": {},
+      "plan": {
+        "Node Type": "Sort",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 97.97,
+        "Total Cost": 98.01,
+        "Plan Rows": 16,
+        "Plan Width": 163,
+        "Disabled": false,
+        "Sort Key": [
+          "(similarity(p.search_value, COALESCE(NULLIF(current_setting('z1.fuzzy_input'::text, true), ''::text), 'jeffrey epstien'::text))) DESC",
+          "p.source_id"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "persons",
+            "Alias": "p",
+            "Startup Cost": 0.0,
+            "Total Cost": 97.65,
+            "Plan Rows": 16,
+            "Plan Width": 163,
+            "Disabled": false,
+            "Filter": "(search_value % COALESCE(NULLIF(current_setting('z1.fuzzy_input'::text, true), ''::text), 'jeffrey epstien'::text))"
+          }
+        ]
+      }
+    },
+    "Q3": {
+      "rows": 3538,
+      "columns": [
+        "start_node_source_id",
+        "middle_node_source_id",
+        "end_node_source_id",
+        "first_edge_source_id",
+        "second_edge_source_id"
+      ],
+      "sha256": "790930fc40d2cad5abfd6aa18430555bbd0c5d37a9b36912f16b375476c2a26f",
+      "sql_sha256": "c78d959a911d75aefdbd68d7ff0ed5502335eb3b141ee0ca88ac527844b49a94",
+      "verification_seconds": 0.08179660001769662,
+      "totals": {},
+      "plan": {
+        "Node Type": "Sort",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 1120.25,
+        "Total Cost": 1141.23,
+        "Plan Rows": 8393,
+        "Plan Width": 40,
+        "Disabled": false,
+        "Sort Key": [
+          "e1.source_id",
+          "e2.source_id"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Hash Join",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 169.59,
+            "Total Cost": 573.24,
+            "Plan Rows": 8393,
+            "Plan Width": 40,
+            "Disabled": false,
+            "Inner Unique": false,
+            "Hash Cond": "(e2.from_node_id = e1.to_node_id)",
+            "Join Filter": "((e1.source_id <> e2.source_id) AND (e2.to_node_id <> e1.from_node_id) AND (e2.to_node_id <> e1.to_node_id))",
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "kg_edges",
+                "Alias": "e2",
+                "Startup Cost": 0.0,
+                "Total Cost": 130.98,
+                "Plan Rows": 2198,
+                "Plan Width": 24,
+                "Disabled": false
+              },
+              {
+                "Node Type": "Hash",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 163.95,
+                "Total Cost": 163.95,
+                "Plan Rows": 451,
+                "Plan Width": 24,
+                "Disabled": false,
+                "Plans": [
+                  {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "kg_edges",
+                    "Alias": "e1",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 163.95,
+                    "Plan Rows": 451,
+                    "Plan Width": 24,
+                    "Disabled": false,
+                    "Filter": "((from_node_id <> to_node_id) AND (from_node_id = (COALESCE(NULLIF(current_setting('z1.kg_start'::text, true), ''::text), '1'::text))::bigint))"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q4": {
+      "rows": 18392,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "28d0a799618944e5d90c0eddb642878cb66af532ea881f0136af358370ffdf2c",
+      "sql_sha256": "75505d1f741f6b4c6aa17aa06caa56d8ba45c9b65df8275b4a1113b881722109",
+      "verification_seconds": 0.3595859999768436,
+      "totals": {
+        "transaction_records": 49770,
+        "valid_amount_records": 49219,
+        "missing_amount_records": 551,
+        "invalid_amount_records": 0,
+        "negative_amount_records": 18237,
+        "zero_amount_records": 532,
+        "positive_amount_records": 30450
+      },
+      "plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 4692.96,
+        "Total Cost": 4693.03,
+        "Plan Rows": 1,
+        "Plan Width": 127,
+        "Disabled": false,
+        "Group Key": [
+          "t.currency",
+          "t.search_value"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 4692.96,
+            "Total Cost": 4692.97,
+            "Plan Rows": 1,
+            "Plan Width": 64,
+            "Disabled": false,
+            "Sort Key": [
+              "t.currency NULLS FIRST",
+              "t.search_value NULLS FIRST"
+            ],
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "financial_transactions",
+                "Alias": "t",
+                "Startup Cost": 0.0,
+                "Total Cost": 4692.95,
+                "Plan Rows": 1,
+                "Plan Width": 64,
+                "Disabled": false,
+                "Filter": "(((NULLIF(current_setting('z1.currency'::text, true), ''::text) IS NULL) OR (currency = NULLIF(current_setting('z1.currency'::text, true), ''::text))) AND ((NULLIF(current_setting('z1.merchant'::text, true), ''::text) IS NULL) OR (search_value = NULLIF(current_setting('z1.merchant'::text, true), ''::text))))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q4_FILTER": {
+      "rows": 1,
+      "columns": [
+        "currency",
+        "merchant_search_value",
+        "transaction_records",
+        "valid_amount_records",
+        "missing_amount_records",
+        "invalid_amount_records",
+        "negative_amount_records",
+        "zero_amount_records",
+        "positive_amount_records",
+        "amount_sum"
+      ],
+      "sha256": "c7f23e15ce3f08ac9150a2776eeb3a63cc64d4a3daf52f4d95a11aab8fd92591",
+      "sql_sha256": "1d5048895909fb8a568efb366293da61c605d64c2fc886488eb837dfd85fce45",
+      "verification_seconds": 0.017020400031469762,
+      "totals": {
+        "transaction_records": 6520,
+        "valid_amount_records": 6519,
+        "missing_amount_records": 1,
+        "invalid_amount_records": 0,
+        "negative_amount_records": 8,
+        "zero_amount_records": 6,
+        "positive_amount_records": 6505
+      },
+      "plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 195.05,
+        "Total Cost": 3601.06,
+        "Plan Rows": 1,
+        "Plan Width": 127,
+        "Disabled": false,
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "financial_transactions",
+            "Alias": "t",
+            "Startup Cost": 195.05,
+            "Total Cost": 3308.55,
+            "Plan Rows": 6500,
+            "Plan Width": 64,
+            "Disabled": false,
+            "Recheck Cond": "((currency = COALESCE(NULLIF(current_setting('z1.currency'::text, true), ''::text), 'USD'::text)) AND (search_value = COALESCE(NULLIF(current_setting('z1.merchant'::text, true), ''::text), 'fedex'::text)))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "financial_currency_merchant_btree",
+                "Startup Cost": 0.0,
+                "Total Cost": 193.42,
+                "Plan Rows": 6500,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "((currency = COALESCE(NULLIF(current_setting('z1.currency'::text, true), ''::text), 'USD'::text)) AND (search_value = COALESCE(NULLIF(current_setting('z1.merchant'::text, true), ''::text), 'fedex'::text)))"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q5": {
+      "rows": 8,
+      "columns": [
+        "file_key",
+        "file_output_records",
+        "distinct_outputs",
+        "distinct_referenced_upstream_runs",
+        "records_without_upstream_run"
+      ],
+      "sha256": "caedd42b4af23119b793133e05c3899184b14a2d30e84097b13062dda67ab299",
+      "sql_sha256": "6c6418261785650b49e424b288cecc2c42421598388d1bcf59b9a0f5dfa3e35d",
+      "verification_seconds": 3.777011099969968,
+      "totals": {},
+      "plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 189894.43,
+        "Total Cost": 386248.64,
+        "Plan Rows": 462664,
+        "Plan Width": 45,
+        "Disabled": false,
+        "Group Key": [
+          "file_key"
+        ],
+        "Filter": "(count(*) > 1)",
+        "Plans": [
+          {
+            "Node Type": "Gather Merge",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 189894.43,
+            "Total Cost": 351548.86,
+            "Plan Rows": 1387991,
+            "Plan Width": 59,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Plans": [
+              {
+                "Node Type": "Sort",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 188894.41,
+                "Total Cost": 190340.24,
+                "Plan Rows": 578330,
+                "Plan Width": 59,
+                "Disabled": false,
+                "Sort Key": [
+                  "file_key",
+                  "output_name"
+                ],
+                "Plans": [
+                  {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "upstream_files",
+                    "Alias": "f",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 111798.3,
+                    "Plan Rows": 578330,
+                    "Plan Width": 59,
+                    "Disabled": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q6": {
+      "rows": 52,
+      "columns": [
+        "dataset",
+        "document_records",
+        "missing_sql_null",
+        "empty_raw",
+        "invalid_raw",
+        "whole_json_null",
+        "valid_objects",
+        "valid_arrays",
+        "valid_other_scalars",
+        "object_subject_absent",
+        "object_subject_json_null",
+        "object_subject_nonnull"
+      ],
+      "sha256": "e4ed651617362934c1fe1f3f68024affa756b1affa1f03e77f61612934607e08",
+      "sql_sha256": "d1e551b79c38ded938044506a09da062dc4bb4877a58b754b566608d09ce3b86",
+      "verification_seconds": 1.627029399969615,
+      "totals": {
+        "document_records": 1424662,
+        "missing_sql_null": 1424027,
+        "empty_raw": 0,
+        "invalid_raw": 0,
+        "whole_json_null": 0,
+        "valid_objects": 631,
+        "valid_arrays": 4,
+        "valid_other_scalars": 0,
+        "object_subject_absent": 0,
+        "object_subject_json_null": 20,
+        "object_subject_nonnull": 611
+      },
+      "plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Finalize",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 241255.07,
+        "Total Cost": 241265.92,
+        "Plan Rows": 30,
+        "Plan Width": 97,
+        "Disabled": false,
+        "Group Key": [
+          "dataset"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Gather Merge",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 241255.07,
+            "Total Cost": 241263.46,
+            "Plan Rows": 72,
+            "Plan Width": 97,
+            "Disabled": false,
+            "Workers Planned": 2,
+            "Plans": [
+              {
+                "Node Type": "Sort",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 240255.05,
+                "Total Cost": 240255.12,
+                "Plan Rows": 30,
+                "Plan Width": 97,
+                "Disabled": false,
+                "Sort Key": [
+                  "dataset NULLS FIRST"
+                ],
+                "Plans": [
+                  {
+                    "Node Type": "Aggregate",
+                    "Strategy": "Hashed",
+                    "Partial Mode": "Partial",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Startup Cost": 240254.01,
+                    "Total Cost": 240254.31,
+                    "Plan Rows": 30,
+                    "Plan Width": 97,
+                    "Disabled": false,
+                    "Group Key": [
+                      "dataset"
+                    ],
+                    "Planned Partitions": 0,
+                    "Plans": [
+                      {
+                        "Node Type": "Seq Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": true,
+                        "Async Capable": false,
+                        "Relation Name": "documents",
+                        "Alias": "d",
+                        "Startup Cost": 0.0,
+                        "Total Cost": 182444.21,
+                        "Plan Rows": 592921,
+                        "Plan Width": 178,
+                        "Disabled": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Q6_JSON": {
+      "rows": 20,
+      "columns": [
+        "document_source_id",
+        "dataset",
+        "file_key",
+        "original_json_retained",
+        "parsed_is_sql_null",
+        "subject_key_present",
+        "subject_value_type"
+      ],
+      "sha256": "77e9a07077e6b3b00a385903e9b44ae41fcaf95236a1b16133a282e6a3166f3b",
+      "sql_sha256": "092fffb063596abc99ad7d3577e253868461fca4d4933ed4000ef96884b0efc4",
+      "verification_seconds": 0.002841999987140298,
+      "totals": {},
+      "plan": {
+        "Node Type": "Sort",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 12.6,
+        "Total Cost": 12.6,
+        "Plan Rows": 1,
+        "Plan Width": 65,
+        "Disabled": false,
+        "Sort Key": [
+          "source_id"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "documents",
+            "Alias": "d",
+            "Startup Cost": 8.56,
+            "Total Cost": 12.59,
+            "Plan Rows": 1,
+            "Plan Width": 65,
+            "Disabled": false,
+            "Recheck Cond": "((email_fields @> '{\"subject\": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))",
+            "Plans": [
+              {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "documents_email_object_gin",
+                "Startup Cost": 0.0,
+                "Total Cost": 8.56,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(email_fields @> '{\"subject\": null}'::jsonb)"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "source_accounting": {
+    "chunks": {
+      "read": 2193090,
+      "accepted": 2193027,
+      "quarantined": 63,
+      "duplicate": 0
+    },
+    "curated_docs": {
+      "read": 5766,
+      "accepted": 5766,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "derived_events": {
+      "read": 3038,
+      "accepted": 3038,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "documents": {
+      "read": 1424673,
+      "accepted": 1424662,
+      "quarantined": 11,
+      "duplicate": 0
+    },
+    "entities": {
+      "read": 10629198,
+      "accepted": 10629198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "event_participants": {
+      "read": 5751,
+      "accepted": 5751,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "event_sources": {
+      "read": 21910,
+      "accepted": 21910,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "financial_transactions": {
+      "read": 49770,
+      "accepted": 49770,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "kg_entities": {
+      "read": 467,
+      "accepted": 467,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "kg_relationships": {
+      "read": 2198,
+      "accepted": 2198,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "persons": {
+      "read": 1614,
+      "accepted": 1614,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "provenance/files": {
+      "read": 1387775,
+      "accepted": 1387775,
+      "quarantined": 0,
+      "duplicate": 0
+    },
+    "provenance/runs": {
+      "read": 123,
+      "accepted": 123,
+      "quarantined": 0,
+      "duplicate": 0
+    }
+  },
+  "effective_inputs": {
+    "fts": "aircraft",
+    "fuzzy_normalized": "jeffrey epstien",
+    "normalization_version": "nfkc-casefold-space-v1",
+    "threshold": 0.3,
+    "kg_start": 1,
+    "q4_currency": null,
+    "q4_merchant": null,
+    "q4_filter_currency": "USD",
+    "q4_filter_merchant": "fedex"
+  }
+}

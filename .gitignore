@@ -2,6 +2,8 @@
 data/
 *.csv
 *.json
+!source-manifest.json
+!evidence/*.json
 *.jsonl
 *.parquet
 *.ndjson
@@ -9,7 +11,10 @@ data/
 *.sqlite
 *.sqlite3
 *.dump
+*.backup
 *.sql.gz
+backups/
+dumps/
 
 # Secrets and local configuration
 .env
@@ -28,7 +33,10 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
-.tmp-pg-c1-integration/
+.ruff_cache/
+.cache/
+.coverage
+htmlcov/
 
 # Local tooling and editor files
 .vscode/
@@ -36,3 +44,13 @@ __pycache__/
 *.log
 .DS_Store
 Thumbs.db
+
+# Historical checkpoint and generated submission files
+/archive/
+/C1/
+/dist/
+/submission/
+*.zip
+
+# Local assignment handout; the solution reports remain versioned
+/DBS2_Z1_zadanie_pre_studentov (1).pdf

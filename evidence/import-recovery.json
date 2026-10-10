@@ -1,0 +1,74 @@
+{
+  "recorded_at": "2026-10-10T19:05:54.857410+00:00",
+  "runs": [
+    {
+      "run_id": "731bf35a-709b-46b4-8fa6-61e6f0b4f1b0",
+      "status": "failed",
+      "failure_stage": "documents",
+      "started_at": "2026-10-10 18:25:12.379070+00:00",
+      "completed_at": "2026-10-10 18:27:14.862491+00:00",
+      "versions": {
+        "duckdb": "1.5.5",
+        "python": "3.13.7",
+        "schema": "z1-schema-v1",
+        "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "psycopg": "3.3.6",
+        "transform": "z1-transform-v1"
+      },
+      "committed_source_rows": 700000
+    },
+    {
+      "run_id": "97275e2e-e6e1-449b-b170-fd66c5bf58ba",
+      "status": "interrupted",
+      "failure_stage": null,
+      "started_at": "2026-10-10 18:27:50.868090+00:00",
+      "completed_at": "2026-10-10 18:36:48.429738+00:00",
+      "versions": {
+        "duckdb": "1.5.5",
+        "python": "3.13.7",
+        "schema": "z1-schema-v1",
+        "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "psycopg": "3.3.6",
+        "transform": "z1-transform-v1"
+      },
+      "committed_source_rows": 2061915
+    },
+    {
+      "run_id": "0b84e59f-2072-47f8-a61b-23cdd8be5c0d",
+      "status": "complete",
+      "failure_stage": null,
+      "started_at": "2026-10-10 18:36:48.430848+00:00",
+      "completed_at": "2026-10-10 19:03:32.783118+00:00",
+      "versions": {
+        "duckdb": "1.5.5",
+        "python": "3.13.7",
+        "schema": "z1-schema-v1",
+        "server": "PostgreSQL 18.3 (Debian 18.3-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "psycopg": "3.3.6",
+        "transform": "z1-transform-v1",
+        "extensions": {
+          "plpgsql": "1.0"
+        }
+      },
+      "committed_source_rows": 12963458
+    }
+  ],
+  "database_bytes": 12178716351,
+  "extensions": {
+    "plpgsql": "1.0"
+  },
+  "recovery_events": [
+    {
+      "event": "DuckDB sort exceeded 512MB before next shard commit",
+      "action": "removed whole-shard sort, retained physical ordinal continuity checks, resumed ledger",
+      "evidence": "initial failed run and subsequent committed coverage"
+    },
+    {
+      "event": "verified importer process stopped to apply document-length cache",
+      "action": "fresh process marked previous attempt interrupted, skipped committed ranges and resumed",
+      "evidence": "interrupted run and full validated coverage"
+    }
+  ],
+  "synthetic_before_after_commit_tests": "passed; see import-tests.json",
+  "full_coverage_validation": "passed; see import-validation.json"
+}
