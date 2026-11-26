@@ -1,0 +1,21 @@
+test_before_after_commit_recovery_and_no_duplicate_derived_rows (test_z1_import_db.DatabaseImportTest.test_before_after_commit_recovery_and_no_duplicate_derived_rows) ... ok
+test_full_fixture_validation_and_database_fk_rejection (test_z1_import_db.DatabaseImportTest.test_full_fixture_validation_and_database_fk_rejection) ... ok
+test_identical_repeat_conflict_and_missing_document_accounting (test_z1_import_db.DatabaseImportTest.test_identical_repeat_conflict_and_missing_document_accounting) ... ok
+test_invalid_optional_reference_is_retained_and_json_states_stay_distinct (test_z1_import_db.DatabaseImportTest.test_invalid_optional_reference_is_retained_and_json_states_stay_distinct) ... ok
+test_missing_unmatched_and_ambiguous_are_separate (test_z1_profile.ReferenceProfileTest.test_missing_unmatched_and_ambiguous_are_separate) ... ok
+test_repeat_processing_is_counted_as_occurrences (test_z1_profile.ReferenceProfileTest.test_repeat_processing_is_counted_as_occurrences) ... ok
+test_complete_prescribed_inventory (test_z1_source.SourceContractTest.test_complete_prescribed_inventory) ... ok
+test_duplicate_path_is_rejected (test_z1_source.SourceContractTest.test_duplicate_path_is_rejected) ... ok
+test_missing_shard_is_rejected (test_z1_source.SourceContractTest.test_missing_shard_is_rejected) ... ok
+test_parallel_export_is_rejected (test_z1_source.SourceContractTest.test_parallel_export_is_rejected) ... ok
+test_exact_float_comparison_including_nan_and_signed_zero (test_z1_transform.TransformationTest.test_exact_float_comparison_including_nan_and_signed_zero) ... ok
+test_identity_ignores_acquisition_time_not_content (test_z1_transform.TransformationTest.test_identity_ignores_acquisition_time_not_content) ... ok
+test_invalid_missing_partial_dates_and_no_invented_zone (test_z1_transform.TransformationTest.test_invalid_missing_partial_dates_and_no_invented_zone) ... ok
+test_json_decimal_text_and_money_precision_sign_missing (test_z1_transform.TransformationTest.test_json_decimal_text_and_money_precision_sign_missing) ... ok
+test_json_null_missing_invalid_arrays_and_key_absence (test_z1_transform.TransformationTest.test_json_null_missing_invalid_arrays_and_key_absence) ... ok
+test_normalization_is_search_only (test_z1_transform.TransformationTest.test_normalization_is_search_only) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.510s
+
+OK

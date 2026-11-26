@@ -1,4 +1,0 @@
-Sort  (cost=47.01..47.02 rows=1 width=16)
-  Sort Key: source_id
-  ->  Seq Scan on chunks  (cost=0.00..47.00 rows=1 width=16)
-        Filter: (to_tsvector('english'::regconfig, COALESCE(content, ''::text)) @@ '''flight'''::tsquery)

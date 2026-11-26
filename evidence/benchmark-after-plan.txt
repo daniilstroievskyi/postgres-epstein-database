@@ -1,0 +1,6 @@
+Sort  (cost=12.60..12.60 rows=1 width=65)
+  Sort Key: source_id
+  ->  Bitmap Heap Scan on documents d  (cost=8.56..12.59 rows=1 width=65)
+        Recheck Cond: ((email_fields @> '{"subject": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))
+        ->  Bitmap Index Scan on documents_email_object_gin  (cost=0.00..8.56 rows=1 width=0)
+              Index Cond: (email_fields @> '{"subject": null}'::jsonb)

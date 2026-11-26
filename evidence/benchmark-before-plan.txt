@@ -1,0 +1,9 @@
+Sort  (cost=189387.30..189387.31 rows=1 width=65)
+  Sort Key: source_id
+  ->  Gather  (cost=1000.00..189387.29 rows=1 width=65)
+        Workers Planned: 2
+        ->  Parallel Seq Scan on documents d  (cost=0.00..188387.19 rows=1 width=65)
+              Filter: ((email_fields @> '{"subject": null}'::jsonb) AND (email_fields_state = 'valid'::text) AND (jsonb_typeof(email_fields) = 'object'::text))
+JIT:
+  Functions: 4
+  Options: Inlining false, Optimization false, Expressions true, Deforming true

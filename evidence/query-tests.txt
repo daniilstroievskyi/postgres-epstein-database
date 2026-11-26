@@ -1,0 +1,41 @@
+test_before_after_commit_recovery_and_no_duplicate_derived_rows (test_z1_import_db.DatabaseImportTest.test_before_after_commit_recovery_and_no_duplicate_derived_rows) ... ok
+test_full_fixture_validation_and_database_fk_rejection (test_z1_import_db.DatabaseImportTest.test_full_fixture_validation_and_database_fk_rejection) ... Validated coverage and original-field fingerprints: documents
+Validated coverage and original-field fingerprints: persons
+Validated coverage and original-field fingerprints: kg_entities
+Validated coverage and original-field fingerprints: derived_events
+Validated coverage and original-field fingerprints: provenance/runs
+Validated coverage and original-field fingerprints: chunks
+Validated coverage and original-field fingerprints: entities
+Validated coverage and original-field fingerprints: kg_relationships
+Validated coverage and original-field fingerprints: event_participants
+Validated coverage and original-field fingerprints: event_sources
+Validated coverage and original-field fingerprints: financial_transactions
+Validated coverage and original-field fingerprints: curated_docs
+Validated coverage and original-field fingerprints: provenance/files
+ok
+test_identical_repeat_conflict_and_missing_document_accounting (test_z1_import_db.DatabaseImportTest.test_identical_repeat_conflict_and_missing_document_accounting) ... ok
+test_invalid_optional_reference_is_retained_and_json_states_stay_distinct (test_z1_import_db.DatabaseImportTest.test_invalid_optional_reference_is_retained_and_json_states_stay_distinct) ... ok
+test_missing_unmatched_and_ambiguous_are_separate (test_z1_profile.ReferenceProfileTest.test_missing_unmatched_and_ambiguous_are_separate) ... ok
+test_repeat_processing_is_counted_as_occurrences (test_z1_profile.ReferenceProfileTest.test_repeat_processing_is_counted_as_occurrences) ... ok
+test_financial_precision_missing_invalid_sign_and_currency_separation (test_z1_queries_db.QueryDatabaseTest.test_financial_precision_missing_invalid_sign_and_currency_separation) ... ok
+test_fts_word_stemming_and_identical_results_with_index (test_z1_queries_db.QueryDatabaseTest.test_fts_word_stemming_and_identical_results_with_index) ... ok
+test_fuzzy_input_normalization_threshold_and_tie_order (test_z1_queries_db.QueryDatabaseTest.test_fuzzy_input_normalization_threshold_and_tie_order) ... ok
+test_index_definitions_ready_and_safe_repeated_creation (test_z1_queries_db.QueryDatabaseTest.test_index_definitions_ready_and_safe_repeated_creation) ... ok
+test_json_null_missing_key_invalid_array_and_partial_index (test_z1_queries_db.QueryDatabaseTest.test_json_null_missing_key_invalid_array_and_partial_index) ... ok
+test_two_directed_edges_preserve_parallel_paths_and_exclude_repeated_nodes (test_z1_queries_db.QueryDatabaseTest.test_two_directed_edges_preserve_parallel_paths_and_exclude_repeated_nodes) ... ok
+test_upstream_file_output_counts_do_not_claim_chronological_attempts (test_z1_queries_db.QueryDatabaseTest.test_upstream_file_output_counts_do_not_claim_chronological_attempts) ... ok
+test_complete_prescribed_inventory (test_z1_source.SourceContractTest.test_complete_prescribed_inventory) ... ok
+test_duplicate_path_is_rejected (test_z1_source.SourceContractTest.test_duplicate_path_is_rejected) ... ok
+test_missing_shard_is_rejected (test_z1_source.SourceContractTest.test_missing_shard_is_rejected) ... ok
+test_parallel_export_is_rejected (test_z1_source.SourceContractTest.test_parallel_export_is_rejected) ... ok
+test_exact_float_comparison_including_nan_and_signed_zero (test_z1_transform.TransformationTest.test_exact_float_comparison_including_nan_and_signed_zero) ... ok
+test_identity_ignores_acquisition_time_not_content (test_z1_transform.TransformationTest.test_identity_ignores_acquisition_time_not_content) ... ok
+test_invalid_missing_partial_dates_and_no_invented_zone (test_z1_transform.TransformationTest.test_invalid_missing_partial_dates_and_no_invented_zone) ... ok
+test_json_decimal_text_and_money_precision_sign_missing (test_z1_transform.TransformationTest.test_json_decimal_text_and_money_precision_sign_missing) ... ok
+test_json_null_missing_invalid_arrays_and_key_absence (test_z1_transform.TransformationTest.test_json_null_missing_invalid_arrays_and_key_absence) ... ok
+test_normalization_is_search_only (test_z1_transform.TransformationTest.test_normalization_is_search_only) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 2.784s
+
+OK
